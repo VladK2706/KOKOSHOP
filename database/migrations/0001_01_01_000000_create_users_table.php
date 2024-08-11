@@ -20,6 +20,7 @@ return new class extends Migration
             $table->integer('num_doc')->unique();
             $table->string('ciudad');
             $table->string('direccion');
+            $table->string('telefono');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
