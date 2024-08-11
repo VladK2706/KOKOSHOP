@@ -53,7 +53,7 @@ class RegisterController extends Controller
             'tipo_doc' => ['required', 'string', 'max:5'],
             'num_doc' => ['required', 'int'],
             'ciudad' => ['required', 'string', 'max:20'],
-            'direccion' => ['required', 'string', 'max:20'],
+            'direccion' => ['required', 'string', 'max:30'],
             'telefono' => ['required', 'string', 'max:10'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],

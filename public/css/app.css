@@ -1,0 +1,15 @@
+:root {
+    --morado: #b8a4c9;
+    --rosado: #f5ccd4;
+}
+
+
+.custom-header {
+    height: 100px;
+    background-color: var(--morado);
+}
+
+.logo {
+    height: 70px;
+
+}

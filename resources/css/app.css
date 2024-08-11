@@ -1,0 +1,7 @@
+.custom-header {
+    height: 150px;
+    /* Ajusta este valor según la altura deseada */
+    display: flex;
+    align-items: center;
+    /* Centra verticalmente el contenido */
+}
