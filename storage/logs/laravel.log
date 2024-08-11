@@ -1600,3 +1600,7 @@
 #65 C:\\xampp\\htdocs\\NEW-CRUD-KOKOSHOP-UI\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\resources\\server.php(23): require_once('C:\\\\xampp\\\\htdocs...')
 #66 {main}
 "} 
+[2024-08-11 18:38:23] local.ERROR: syntax error, unexpected single-quoted string "email", expecting "]" {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): syntax error, unexpected single-quoted string \"email\", expecting \"]\" at C:\\xampp\\htdocs\\NEW-CRUD-KOKOSHOP-UI\\app\\Models\\User.php:26)
+[stacktrace]
+#0 {main}
+"} 

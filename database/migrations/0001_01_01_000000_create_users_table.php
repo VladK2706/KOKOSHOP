@@ -17,8 +17,9 @@ return new class extends Migration
             $table->string('lastname');
             $table->integer('id_rol');
             $table->string('tipo_doc');
-            $table->integer('num_doc');
+            $table->integer('num_doc')->unique();
             $table->string('ciudad');
+            $table->string('direccion');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');

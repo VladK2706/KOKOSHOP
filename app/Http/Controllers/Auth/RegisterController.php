@@ -53,6 +53,7 @@ class RegisterController extends Controller
             'tipo_doc' => ['required', 'string', 'max:5'],
             'num_doc' => ['required', 'int'],
             'ciudad' => ['required', 'string', 'max:20'],
+            'direccion' => ['required', 'string', 'max:20'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
@@ -71,6 +72,7 @@ class RegisterController extends Controller
             'tipo_doc' => $data['tipo_doc'],
             'num_doc' => $data['num_doc'],
             'ciudad' => $data['ciudad'],
+            'direccion' => $data['direccion'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
