@@ -10,7 +10,7 @@
                             <?php echo csrf_field(); ?>
 
                             <div class="row mb-3">
-                                <label for="name" class="col-md-4 col-form-label text-md-end"><?php echo e(__('Name')); ?></label>
+                                <label for="name" class="col-md-4 col-form-label text-md-end"><?php echo e(__('Nombre')); ?></label>
 
                                 <div class="col-md-6">
                                     <input id="name" type="text"
@@ -41,7 +41,7 @@ unset($__errorArgs, $__bag); ?>
 
                             <div class="row mb-3">
                                 <label for="lastname"
-                                    class="col-md-4 col-form-label text-md-end"><?php echo e(__('Lastname')); ?></label>
+                                    class="col-md-4 col-form-label text-md-end"><?php echo e(__('Apellido')); ?></label>
 
                                 <div class="col-md-6">
                                     <input id="lastname" type="text"
