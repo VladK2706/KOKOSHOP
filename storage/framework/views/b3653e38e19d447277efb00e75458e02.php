@@ -45,16 +45,20 @@
                         <?php if(auth()->guard()->guest()): ?>
                             <?php if(Route::has('login')): ?>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="<?php echo e(route('login')); ?>"><?php echo e(__('Login')); ?></a>
+                                    <a class="nav-link" href="<?php echo e(route('login')); ?>"><?php echo e(__('Iniciar Sesión')); ?></a>
                                 </li>
                             <?php endif; ?>
 
                             <?php if(Route::has('register')): ?>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="<?php echo e(route('register')); ?>"><?php echo e(__('Register')); ?></a>
+                                    <a class="nav-link" href="<?php echo e(route('register')); ?>"><?php echo e(__('Regitrarse')); ?></a>
                                 </li>
                             <?php endif; ?>
                         <?php else: ?>
+                            <li class="nav-item">
+                                <a href="<?php echo e(route('usuarios.index')); ?>" class="nav-link"><?php echo e(__('Usuarios')); ?></a>
+                            </li>
+
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                     data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -66,7 +70,7 @@
                                     <a class="dropdown-item" href="<?php echo e(route('logout')); ?>"
                                         onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        <?php echo e(__('Logout')); ?>
+                                        <?php echo e(__('Cerrar Sesión')); ?>
 
                                     </a>
 
@@ -75,6 +79,8 @@
                                     </form>
                                 </div>
                             </li>
+
+
                         <?php endif; ?>
                     </ul>
                 </div>
