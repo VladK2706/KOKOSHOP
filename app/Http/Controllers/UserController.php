@@ -64,11 +64,17 @@ class UserController extends Controller
             'ciudad' => ['required', 'string', 'max:20'],
             'direccion' => ['required', 'string', 'max:30'],
             'telefono' => ['required', 'string', 'max:10'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'email' => ['required', 'string', 'email', 'max:255'],
         ]);
 
         $usuario->update($request->all());
+
+        return redirect()->route('usuarios.index');
+    }
+
+    public function destroy(User $usuario)
+    {
+        $usuario->delete();
 
         return redirect()->route('usuarios.index');
     }

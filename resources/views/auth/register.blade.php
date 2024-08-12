@@ -94,26 +94,27 @@
                                     <select id="ciudad" class="form-control @error('ciudad') is-invalid @enderror"
                                         name="ciudad" value="{{ old('ciudad') }}" required autocomplete="ciudad">
                                         <option value="" selected>Selecionar</option>
-                                        <option value="bogota">Bogotá D.C.</option>
-                                        <option value="medellin">Medellín</option>
-                                        <option value="cali">Cali</option>
-                                        <option value="barranquilla">Barranquilla</option>
-                                        <option value="cartagena">Cartagena</option>
-                                        <option value="bucaramanga">Bucaramanga</option>
-                                        <option value="pereira">Pereira</option>
-                                        <option value="manizales">Manizales</option>
-                                        <option value="santa_marta">Santa Marta</option>
-                                        <option value="ibague">Ibagué</option>
-                                        <option value="cucuta">Cúcuta</option>
-                                        <option value="villavicencio">Villavicencio</option>
-                                        <option value="armenia">Armenia</option>
-                                        <option value="neiva">Neiva</option>
-                                        <option value="popayan">Popayán</option>
-                                        <option value="valledupar">Valledupar</option>
-                                        <option value="pasto">Pasto</option>
-                                        <option value="monteria">Montería</option>
-                                        <option value="quibdo">Quibdó</option>
-                                        <option value="tunja">Tunja</option>
+                                        <option value="Bogotá D.C.">Bogotá D.C.</option>
+                                        <option value="Medellín">Medellín</option>
+                                        <option value="Cali">Cali</option>
+                                        <option value="Barranquilla">Barranquilla</option>
+                                        <option value="Cartagena">Cartagena</option>
+                                        <option value="Bucaramanga">Bucaramanga</option>
+                                        <option value="Pereira">Pereira</option>
+                                        <option value="Manizales">Manizales</option>
+                                        <option value="Santa Marta">Santa Marta</option>
+                                        <option value="Ibagué">Ibagué</option>
+                                        <option value="Cúcuta">Cúcuta</option>
+                                        <option value="Villavicencio">Villavicencio</option>
+                                        <option value="Armenia">Armenia</option>
+                                        <option value="Neiva">Neiva</option>
+                                        <option value="Popayán">Popayán</option>
+                                        <option value="Valledupar">Valledupar</option>
+                                        <option value="Pasto">Pasto</option>
+                                        <option value="Montería">Montería</option>
+                                        <option value="Quibdó">Quibdó</option>
+                                        <option value="Tunja">Tunja</option>
+                                        
                                     </select>
 
                                     @error('ciudad')

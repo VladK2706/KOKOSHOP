@@ -51,7 +51,7 @@
 
                             <?php if(Route::has('register')): ?>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="<?php echo e(route('register')); ?>"><?php echo e(__('Regitrarse')); ?></a>
+                                    <a class="nav-link" href="<?php echo e(route('register')); ?>"><?php echo e(__('Registrarse')); ?></a>
                                 </li>
                             <?php endif; ?>
                         <?php else: ?>

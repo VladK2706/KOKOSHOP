@@ -9,6 +9,7 @@
             <table class="table">
                 <thead>
                     <th>Número de documento</th>
+                    <th>Tipo de documento</th>
                     <th>Rol</th>
                     <th>Nombre</th>
                     <th>Apellido</th>
@@ -22,6 +23,19 @@
                     @foreach ($users as $usuario)
                         <tr>
                             <td>{{ $usuario->num_doc }}</td>
+                            <td>
+                                @if ($usuario->tipo_doc == 'CC')
+                                    CC
+                                @elseif ($usuario->tipo_doc == 'TI')
+                                    TI
+                                @elseif ($usuario->tipo_doc == 'CE')
+                                    CE
+                                @elseif ($usuario->tipo_doc == 'PEP')
+                                    PEP
+                                @elseif ($usuario->tipo_doc == 'DIE')
+                                    DIE
+                                @endif
+                            </td>
                             <td>
                                 @if ($usuario->id_rol == 1)
                                     Admin

@@ -4,15 +4,15 @@
         <h2>Registrar Usuario</h2>
         <a href="{{ route('usuarios.index') }}" class="btn btn-danger">Cancelar</a>
         <div class="card-body">
-            <form method="POST" action="{{ route('usuarios.store') }}">
+            <form method="POST" action="{{ route('usuarios.update', $usuario) }}">
                 @csrf
-
+                @method('PUT')
                 <div class="row mb-3">
                     <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Nombre') }}</label>
 
                     <div class="col-md-6">
                         <input id="name" type="text" class="form-control @error('name') is-invalid @enderror"
-                            name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                            name="name" value="{{ $usuario->name }}" required autocomplete="name" autofocus>
 
                         @error('name')
                             <span class="invalid-feedback" role="alert">
@@ -27,7 +27,7 @@
 
                     <div class="col-md-6">
                         <input id="lastname" type="text" class="form-control @error('lastname') is-invalid @enderror"
-                            name="lastname" value="{{ old('lastname') }}" required autocomplete="lastname">
+                            name="lastname" value="{{ $usuario->lastname }}" required autocomplete="lastname">
 
                         @error('lastname')
                             <span class="invalid-feedback" role="alert">
@@ -44,7 +44,17 @@
 
                         <select id="id_rol" class="form-control @error('id_rol') is-invalid @enderror" name="id_rol"
                             value="{{ old('id_rol') }}" required autocomplete="id_rol">
-                            <option value="" selected>Selecionar</option>
+                            <option value="{{ $usuario->id_rol }}" selected>
+                                @if ($usuario->id_rol == 1)
+                                    Admin
+                                @elseif ($usuario->id_rol == 2)
+                                    Cliente
+                                @elseif ($usuario->id_rol == 3)
+                                    Vendedor
+                                @elseif ($usuario->id_rol == 4)
+                                    Almacenista
+                                @endif
+                            </option>
                             <option value="1">Admin</option>
                             <option value="2">Cliente</option>
                             <option value="3">Vendedor</option>
@@ -66,7 +76,19 @@
 
                         <select id="tipo_doc" class="form-control @error('tipo_doc') is-invalid @enderror" name="tipo_doc"
                             value="{{ old('tipo_doc') }}" required autocomplete="tipo_doc">
-                            <option value="" selected>Selecionar</option>
+                            <option value="{{ $usuario->tipo_doc }}" selected>
+                                @if ($usuario->tipo_doc == 'CC')
+                                    Cédula de ciudadania
+                                @elseif ($usuario->tipo_doc == 'TI')
+                                    Tarjeta de Identidad
+                                @elseif ($usuario->tipo_doc == 'CE')
+                                    Cédula de Extranjeria
+                                @elseif ($usuario->tipo_doc == 'PEP')
+                                    Permiso Especial de Permanencia
+                                @elseif ($usuario->tipo_doc == 'DIE')
+                                    Documento de identificación extranjero
+                                @endif
+                            </option>
                             <option value="CC">Cédula de ciudadania</option>
                             <option value="TI">Tarjeta de Identidad</option>
                             <option value="CE">Cédula de Extranjeria</option>
@@ -88,7 +110,7 @@
 
                     <div class="col-md-6">
                         <input id="num_doc" type="Number" class="form-control @error('num_doc') is-invalid @enderror"
-                            name="num_doc" value="{{ old('num_doc') }}" required autocomplete="num_doc">
+                            name="num_doc" value="{{ $usuario->num_doc }}" required autocomplete="num_doc">
 
                         @error('num_doc')
                             <span class="invalid-feedback" role="alert">
@@ -105,7 +127,7 @@
 
                         <select id="ciudad" class="form-control @error('ciudad') is-invalid @enderror" name="ciudad"
                             value="{{ old('ciudad') }}" required autocomplete="ciudad">
-                            <option value="" selected>Selecionar</option>
+                            <option value="{{ $usuario->ciudad }}" selected>{{ $usuario->ciudad }}</option>
                             <option value="Bogotá D.C.">Bogotá D.C.</option>
                             <option value="Medellín">Medellín</option>
                             <option value="Cali">Cali</option>
@@ -142,7 +164,7 @@
                     <div class="col-md-6">
                         <input id="direccion" type="text"
                             class="form-control @error('direccion') is-invalid @enderror" name="direccion"
-                            value="{{ old('direccion') }}" required autocomplete="direccion">
+                            value="{{ $usuario->direccion }}" required autocomplete="direccion">
 
                         @error('direccion')
                             <span class="invalid-feedback" role="alert">
@@ -158,7 +180,7 @@
 
                     <div class="col-md-6">
                         <input id="telefono" type="Number" class="form-control @error('telefono') is-invalid @enderror"
-                            name="telefono" value="{{ old('telefono') }}" required autocomplete="telefono">
+                            name="telefono" value="{{ $usuario->telefono }}" required autocomplete="telefono">
 
                         @error('telefono')
                             <span class="invalid-feedback" role="alert">
@@ -174,7 +196,7 @@
 
                     <div class="col-md-6">
                         <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
-                            name="email" value="{{ old('email') }}" required autocomplete="email">
+                            name="email" value="{{ $usuario->email }}" required autocomplete="email">
 
                         @error('email')
                             <span class="invalid-feedback" role="alert">
@@ -183,37 +205,37 @@
                         @enderror
                     </div>
                 </div>
+                <!--
+                    <div class="row mb-3">
+                        <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Contraseña') }}</label>
 
-                <div class="row mb-3">
-                    <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Contraseña') }}</label>
+                        <div class="col-md-6">
+                            <input id="password" type="password"
+                                class="form-control @error('password') is-invalid @enderror" name="password" required
+                                autocomplete="new-password">
 
-                    <div class="col-md-6">
-                        <input id="password" type="password"
-                            class="form-control @error('password') is-invalid @enderror" name="password" required
-                            autocomplete="new-password">
-
-                        @error('password')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
+                            @error('password')
+        <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+    @enderror
+                        </div>
                     </div>
-                </div>
 
-                <div class="row mb-3">
-                    <label for="password-confirm"
-                        class="col-md-4 col-form-label text-md-end">{{ __('Confirmar Contraseña') }}</label>
+                    <div class="row mb-3">
+                        <label for="password-confirm"
+                            class="col-md-4 col-form-label text-md-end">{{ __('Confirmar Contraseña') }}</label>
 
-                    <div class="col-md-6">
-                        <input id="password-confirm" type="password" class="form-control" name="password_confirmation"
-                            required autocomplete="new-password">
+                        <div class="col-md-6">
+                            <input id="password-confirm" type="password" class="form-control" name="password_confirmation"
+                                required autocomplete="new-password">
+                        </div>
                     </div>
-                </div>
-
+                -->
                 <div class="row mb-0">
                     <div class="col-md-6 offset-md-4">
                         <button type="submit" class="btn btn-primary">
-                            {{ __('Register') }}
+                            {{ __('Actualizar') }}
                         </button>
                     </div>
                 </div>
