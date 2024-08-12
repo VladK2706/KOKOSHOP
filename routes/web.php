@@ -11,4 +11,7 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::resource('usuarios', UserController::class);
+Route::middleware(['auth'])->group(function () {
+    Route::resource('usuarios', UserController::class);
+});
+

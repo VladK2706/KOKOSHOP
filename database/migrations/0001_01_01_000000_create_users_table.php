@@ -53,7 +53,7 @@ return new class extends Migration
         });
 
         Schema::table('users', function (Blueprint $table) {
-            $table->unsignedBigInteger('id_rol')->default(1)->change();
+            $table->unsignedBigInteger('id_rol')->default(2)->change();
             $table->string('tipo_doc')->default('CC')->change();
             $table->string('ciudad')->default('Bogota D.C')->change();
         });

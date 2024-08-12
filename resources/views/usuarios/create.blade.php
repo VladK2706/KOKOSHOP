@@ -38,6 +38,28 @@
                 </div>
 
                 <div class="row mb-3">
+                    <label for="id_rol" class="col-md-4 col-form-label text-md-end">{{ __('Rol') }}</label>
+
+                    <div class="col-md-6">
+
+                        <select id="id_rol" class="form-control @error('id_rol') is-invalid @enderror" name="id_rol"
+                            value="{{ old('id_rol') }}" required autocomplete="id_rol">
+                            <option value="" selected>Selecionar</option>
+                            <option value="1">Admin</option>
+                            <option value="2">Cliente</option>
+                            <option value="3">Vendedor</option>
+                            <option value="4">Almacenista</option>
+                        </select>
+
+                        @error('id_rol')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                </div>
+
+                <div class="row mb-3">
                     <label for="tipo_doc" class="col-md-4 col-form-label text-md-end">{{ __('Tipo de Documento') }}</label>
 
                     <div class="col-md-6">

@@ -38,7 +38,7 @@ $message = $__bag->first($__errorArgs[0]); ?>
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
-                                </div>
+                                </div> 
                             </div>
 
                             <div class="row mb-3">
