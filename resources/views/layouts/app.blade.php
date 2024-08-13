@@ -14,12 +14,13 @@
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/form.css') }}">
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
 
 <body>
-    <div id="app">
+    <div id="app" class="d-flex flex-column vh-100">
         <nav class="custom-header navbar navbar-expand-md navbar-light shadow-sm ">
             <div class="container">
 
@@ -85,7 +86,7 @@
             </div>
         </nav>
 
-        <main class="py-4">
+        <main class="flex-fill" style="display: flex">
             @yield('content')
         </main>
     </div>

@@ -14,12 +14,13 @@
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
     <link rel="stylesheet" href="<?php echo e(asset('css/app.css')); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset('css/form.css')); ?>">
     <!-- Scripts -->
     <?php echo app('Illuminate\Foundation\Vite')(['resources/sass/app.scss', 'resources/js/app.js']); ?>
 </head>
 
 <body>
-    <div id="app">
+    <div id="app" class="d-flex flex-column vh-100">
         <nav class="custom-header navbar navbar-expand-md navbar-light shadow-sm ">
             <div class="container">
 
@@ -87,7 +88,7 @@
             </div>
         </nav>
 
-        <main class="py-4">
+        <main class="flex-fill" style="display: flex">
             <?php echo $__env->yieldContent('content'); ?>
         </main>
     </div>
