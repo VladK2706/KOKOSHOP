@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lilita+One&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/login.css">
+    <title>Regístrate Ahora</title>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg" data-bs-theme="light" style="background-color: #7e79ac;">
+            <a class="navbar-brand" href="index.html">
+              <img src="images/logo_koko.png" alt="Bootstrap" width="100" height="100">
+            </a>
+            <div class="collapse navbar-collapse" id="navbarColor03">
+              <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                  <a class="nav-link active" href="index.html">Inicio
+                    <span class="visually-hidden">(current)</span>
+                  </a>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-user"></i> Perfil
+                  </a>
+                  <div class="dropdown-menu">
+                    <a class="dropdown-item" href="registrarse.html">Registrar</a>
+                    <a class="dropdown-item" href="login.html">Iniciar sesión</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="index.html">Cerrar sesión <img src="https://cdn-icons-png.flaticon.com/512/1250/1250678.png" alt="Bootstrap" width="20" height="20"></a>
+                  </div>
+                </li>
+                <li class="nav-item">
+                  <ul class="navbar-nav me-auto">
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </nav>
+    </header>
+<script src="js/registrar-cliente.js"></script>
+<div id="Estilos html">
+    <style>
+      /* Estilos básicos */
+      body {
+          font-family: Arial, sans-serif;
+          margin: 0;
+          padding: 0;
+      }
+  
+      .container {
+          display: flex;
+      }
+  
+      .form-section {
+        background-color: #ffffff;
+    max-width: 400px;
+    margin: 100px auto;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 2px 10px rgb(0, 0, 0);
+      }
+  
+      .image-section {
+          width: 70%;
+      }
+  
+      .image-section img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+      }
+  
+      /* Estilos para el formulario */
+      #form_register {
+          width: 100%;
+          padding: 20px;
+          border: 1px solid #ccc;
+          border-radius: 5px;
+      }
+  
+      input, select {
+          width: 100%;
+          padding: 8px;
+          margin-bottom: 10px;
+          box-sizing: border-box;
+      }
+  
+      #boton_submit_registro, #ir_login {
+          width: 100%;
+          padding: 10px;
+          background-color: #4CAF50;
+          color: white;
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+          
+      }
+      
+      .password-field {
+    position: relative;
+  }
+  
+  .toggle-password {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    cursor: pointer;
+  }
+  img {
+            border-radius: 15px; /* Ajusta este valor para cambiar el radio de las esquinas */
+        }
+  </style>
+    </div>
+    <style>
+      body {
+          background-color: #b8a4c9;
+      }
+  </style>
+  <br>
+  <div class="container">
+    <div class="formulario">
+
+        <h1>Registrarse</h1>
+        <form action="" method="post" id="form">
+            <label for="">Nombre<span class="warnings"> *</span></label>
+            <input type="text" id="nombre" name="nombre" maxlength="50" minlength="3">
+            <p class="warnings" id="warnings_nombre"></p>
+
+            <label for="">Apellido<span class="warnings"> *</span></label>
+            <input type="text" name="apellido" id="apellido" maxlength="50" minlength="3">
+            <p class="warnings" id="warnings_apellido"></p>
+
+            <label for="">Usuario<span class="warnings"> *</span></label>
+            <input type="text" id="usuario" name="usuario" maxlength="50" minlength="3">
+            <p class="warnings" id="warnings_usuario"></p>
+
+            <label for="">Contraseña<span class="warnings"> *</span></label>
+            <input type="password" id="contraseña" name="contraseña" maxlength="50" minlength="3">
+            <p class="warnings" id="warnings_contraseña"></p>
+
+          <label for="">Repetir Contraseña<span class="warnings"> *</span></label>
+            <input type="password" id="repetir_contraseña" name="repetir_contraseña" maxlength="50" minlength="3">
+            <p class="warnings" id="warnings_contraseña"></p>
+            <label for="">Tipo de documento<span class="warnings"> *</span></label>
+            <select name="tipo_doc" id="tipo_doc">
+                <option value="null" selected>Selecionar</option>
+                <option value="CC">Cédula de ciudadania</option>
+                <option value="TI">Tarjeta de Identidad</option>
+                <option value="CE">Cédula de Extrnageria</option>
+            </select>
+            <p class="warnings" id="warnings_tipo_doc"></p>
+
+            <label for="num-doc">Número de documento<span class="warnings"> *</span></label>
+            <input type="number" name="num_doc" id="num_doc" maxlength="10" minlength="10">
+            <p class="warnings" id="warnings_num_doc"></p>
+
+            <label for="correo">Correo Electronico<span class="warnings"> *</span></label>
+            <input type="email" name="correo" id="correo" maxlength="100" minlength="20">
+            <p class="warnings" id="warnings_correo"></p>
+
+            <label for="ciudad">Ciudad<span class="warnings"> *</span></label>
+            <select name="ciudad" id="ciudad">
+                <option value="null" selected>Selecionar</option>
+                <option value="bogotá">Bogotá D.C</option>
+                <option value="cali">Cali</option>
+                <option value="medellin">Medellin</option>
+            </select>
+            <p class="warnings" id="warnings_ciudad"></p>
+
+            <label for="telefono">Número de telefono<span class="warnings"> *</span></label>
+            <input type="number" name="telefono" id="telefono" maxlength="10" minlength="10">
+            <p class="warnings" id="warnings_telefono"></p>
+            <label>Fecha de Nacimiento:</label>
+            <input id="fecha_nacimiento" type="date" required>
+            <label for="condiciones">
+              <span class="warnings"></span>
+              <div class="checkbox-container">
+                  <input type="checkbox" id="terminos" name="terminos">
+                  <label for="terminos">
+                      Acepto que he leído los Términos y Condiciones y autorizo a KokoShop de Colombia S.A.S. a realizar el tratamiento de mis datos personales, de conformidad a la normatividad vigente.
+                      <a href="#" id="openModal" class="link-terminos">Consulta aquí los Términos y Condiciones vigentes</a>
+                  </label>
+              </div>
+          </label>
+          
+          <!-- Modal -->
+          <div id="termsModal" class="modal">
+              <div class="modal-content">
+                  <span class="close">&times;</span>
+                  <center><h2>Términos y Condiciones</h2></center>
+                  <p>
+                  
+                    ---
+                    
+                    **KOKOSHOP TÉRMINOS, CONDICIONES Y POLÍTICAS DE USO DE LA PÁGINA WEB Y PROTECCIÓN DE DATOS PERSONALES**
+                    
+                    **TÉRMINOS Y CONDICIONES**
+                    
+                    Lea detenidamente estos Términos y Condiciones de Uso (en adelante "Términos y Condiciones") antes de utilizar el sitio Web y/o el Portal de Negocio de KokoShop de Colombia S.A.S. (en adelante, "KOKOSHOP").
+                    
+                    I. DISPOSICIONES GENERALES:
+                    Al acceder y utilizar el sitio Web de KOKOSHOP y/o el Portal de Negocio se entiende que usted conoce y acepta expresamente estos Términos y Condiciones. Si no se encuentra de acuerdo con estos Términos y Condiciones, por favor no utilice el sitio Web de KOKOSHOP ni el Portal de Negocio, ni descargue material alguno.
+                    
+                    La información y materiales que constan en el sitio Web y/o en el Portal de Negocio son de propiedad de KOKOSHOP, o ésta cuenta con los derechos de uso, por lo que salvo se indique lo contrario en estos Términos y Condiciones, no se podrá modificar, copiar, distribuir, transmitir, mostrar, ejecutar, reproducir, publicar, conceder licencias, crear trabajos derivados, transferir o vender información, software, productos o servicios obtenidos en los materiales y/o en el sitio Web y/o en el Portal de Negocio.
+                    
+                    A través de su sitio Web y/o Portal de Negocio, KOKOSHOP no vende sus productos directamente a consumidores finales, pues la comercialización de estos se realiza a través de las Consultoras y Directoras Independientes.
+                    
+                    Para efectos de estos Términos y Condiciones, se establecen las siguientes definiciones:
+                    
+                    Consultora Independiente: Vendedora Independiente, persona natural comerciante, mayor de edad, que ha decidido iniciar una relación comercial con KOKOSHOP, previa aceptación del contrato de Vendedor Independiente, y que compra productos para revenderlos a sus clientes, aprovechando todos los beneficios comerciales a los que tiene acceso, a través de un código único personal e intransferible que la identifica como tal.
+                    
+                    Directora Independiente: Vendedora Independiente, persona natural o jurídica que desarrolla actividades multinivel, y que luego de ser Consultora Independiente y desarrollarse comercialmente en su negocio con KOKOSHOP, adquiere cierto estatus que le permite tener un vínculo comercial a través de un Contrato Comercial, por el cual recibe Ganancias.
+                    
+                    Portal de Negocio: Herramienta que KOKOSHOP pone a disposición de las Consultoras y Directoras Independientes para realizar sus pedidos y gestionar sus negocios. Para acceder, deben ingresar a www.kokoshop.com/co con su código y contraseña.
+                    
+                    II. ALCANCE DE LOS TÉRMINOS Y CONDICIONES:
+                    Estos Términos y Condiciones aplican a todos los sitios Web de KOKOSHOP, ya sea que se trate de un sitio patrocinado, administrado por intermedio de un tercero o alojado por un tercero, de propiedad de KOKOSHOP. Asimismo, aplican al proceso de incorporación de Vendedores Independientes y de otorgamiento de Crédito Directo, a los recursos y las herramientas que se proporcionan a través del sitio Web de KOKOSHOP y/o del Portal de Negocio.
+                    
+                    III. PROTECCIÓN DE DATOS PERSONALES:
+                    A continuación se informa el uso que KOKOSHOP le dará a la información que usted envíe a través de formularios para completar datos en el sitio Web, con el fin de que pueda decidir si desea ingresar sus datos o no.
+                    
+                    Los datos personales que usted registre voluntariamente en este sitio Web serán objeto de tratamiento automatizado e incorporados en las bases de datos que administra KOKOSHOP. En caso de que usted proporcione datos personales de naturaleza sensible, KOKOSHOP se compromete a no divulgarlos a terceros y a utilizar dichos datos como estadísticos comerciales y/o de marketing, a tratarlos internamente con el fin de mejorar el sitio Web, para conocer las preferencias de los usuarios y adaptar el sitio Web a los gustos y/o necesidades de estos, para juegos promocionales, fines publicitarios y para el envío de información comercial y del negocio multinivel. En ningún caso usted estará obligado a proporcionar datos sensibles ni a autorizar su tratamiento.
+                    
+                    Con la aceptación de estos Términos y Condiciones, usted declara que conoce los derechos y deberes que le asisten como Titular de sus Datos Personales, específicamente a consultar y a revocar en cualquier momento su autorización, así como, a conocer, rectificar y actualizar sus datos personales que reposan en las bases de datos que administra KOKOSHOP; así mismo, usted da su consentimiento previo, expreso e informado y autoriza a KOKOSHOP, como responsable del tratamiento, para:
+                    
+                    a. Recolectar, almacenar y archivar sus datos personales en las bases de datos que administra KOKOSHOP, utilizando mecanismos de seguridad suficientes, sin desconocer las obligaciones y deberes establecidos en la legislación vigente sobre protección de datos personales y atendiendo a las Políticas de Tratamiento de Datos Personales adoptadas por KOKOSHOP.
+                    
+                    b. Correlacionar las bases de datos en las cuales reposan sus datos personales, con otras bases de datos administradas por KOKOSHOP o por terceros que desarrollen actividades en calidad de Encargados o que cuenten con información estadística y de comportamiento del sector, siempre y cuando dicha correlación tenga como propósito, entre otros, analizar, evaluar, generar datos estadísticos, indicadores, resultados comerciales, investigaciones de mercados, variables del negocio y/o cualquier otra consideración relacionada directamente con el mismo.
+                    
+                    c. Enviar información y/o material publicitario acerca de los productos KOKOSHOP, así como para fines administrativos internos, comerciales, actividades estadísticas y de mercadeo, incluyendo investigación de mercados y análisis estadísticos. Así mismo KOKOSHOP podrá enviar información publicitaria relacionada con actividades de comercialización en red o mercadeo multinivel.
+                    
+                    d. Compartir sus datos personales con: (i) Vendedores Independientes para que se contacten con usted, le ofrezcan en venta los productos de la marca KOKOSHOP y le informen sobre el sistema de venta multinivel; (ii) Personas naturales o jurídicas, públicas o privadas, nacionales o extranjeras, que por cuenta de KOKOSHOP realicen el tratamiento de los datos personales, en calidad de Encargados; (iii) Entidades públicas y administrativas, cuando éstos le sean solicitados a KOKOSHOP en ejercicio de sus funciones legales o por orden judicial; (iv) Terceros en virtud de la transferencia o transmisión nacional y/o internacional de datos personales en respuesta a las necesidades del negocio, tratamiento que cumplirá con la legislación que regula la protección de datos, los principios que la tutelan y el mantenimiento de la seguridad y confidencialidad de la información; (v) Proveedores externos de KOKOSHOP que presten servicios tales como: Servicios de Verificación de Información, Servicios de Cobranza y Recaudo, Servicios de Pagos Electrónicos y/o Puntos de Pago, Servicios de Entrenamiento, Servicios de Investigación de Mercados, Compañías de Despacho y Entrega de Pedidos, Asociación Colombiana de Venta Directa (ACOVEDI), Agencias de Viajes, Compañías de Seguros, Corredores de Seguros, entre otros, quienes tratarán los datos personales de acuerdo con las Políticas establecidas por la compañía y por las que cada uno de ellos haya implementado para cumplir con las disposiciones aplicables a la Protección de Datos Personales.
+                    
+                    Usted podrá realizar consultas o reclamos relacionados con la autorización, actualización, rectificación o supresión de sus datos personales (siempre que el dato a suprimir no sea requerido para el desarrollo de una relación contractual) a través del correo electrónico: protecciondedatoscolombia@kokoshop.com. Los mecanismos para el ejercicio de sus derechos constan en la Política de Tratamiento de Datos Personales y el Aviso de Privacidad que forman parte integral de estos Términos y Condiciones y que usted acepta conocer, pudiéndolos consultar en la página web www.kokoshop.com/co.
+                    
+                    IV. PROPIEDAD INTELECTUAL:
+                    A KOKOSHOP, como licenciatario, le ha sido autorizado el uso exclusivo de todas las marcas, enseñas, logos, nombres y cualesquiera otros signos distintivos, así como los modelos de utilidad y/o diseños industriales y demás elementos de propiedad industrial o intelectual insertados, usados y/o publicados en sus sitios Web oficiales y/o en el Portal de Negocios. Estos signos distintivos son de propiedad exclusiva de terceros que han autorizado expresamente a KOKOSHOP para su uso y/o explotación.
+                    En el sitio Web de KOKOSHOP usted encuentra información, recursos y herramientas que no podrán ser interpretados como concesión u otorgamiento a cualquier título de autorizaciones, licencias o cualquier otro derecho para usar o disponer de cualquier forma de la propiedad intelectual. Igualmente, se prohíbe el uso de los nombres, logotipos, marcas y cualesquiera otros signos distintivos de uso exclusivo de KOKOSHOP, como enlaces hipertextuales o de cualquier otra forma ("links"). Por tanto, no está permitido su uso en páginas no controladas por KOKOSHOP. La inobservancia de estas condiciones constituirá una violación a los derechos de propiedad intelectual.
+                    
+                    Le advertimos que la página Web oficial de KOKOSHOP es www.kokoshop.com/co, quien podrá desarrollar otros medios de contacto en internet, medios virtuales y/o redes sociales (Facebook, Twitter, YouTube, entre otros) y/o aplicaciones</p>
+              </div>
+          </div>
+          
+                
+            </label>
+            <input type="submit" value="Registrarse">
+        </form>
+        <div class="text-sign-up">
+            <h5>¿Ya tienes una cuenta?</h5>
+            <a href="login.html"> <button id="ir_login" type="submit">Ingresa Aquí</button> </a>
+        </div>
+        <hr>
+        <a class="btn btn-sign-up" href="index.html">Atras</a>
+    </div>
+    <div>
+        <img src="images/blusa_koko.jpg" alt="Imagen" height="800px" width="800px">
+    </div>
+    </div>
+  </div>
+    <!--Conexión JS-->
+    <script src="JS/registrar-cliente.js"></script>
+    <script src="JS/terminos_condiciones.js"></script>
+</body>
+  
+</html>
