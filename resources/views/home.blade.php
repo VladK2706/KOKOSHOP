@@ -57,7 +57,7 @@ ul {
 }
 
 .imagen-principal {
-    padding-top: 100px;
+    
     width: 100%;
     height: 980px;
 
@@ -71,26 +71,6 @@ ul {
 
 
 }
-
-.capa-oscura {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 980px;
-    background-color: black;
-    opacity: 0.5;
-}
-
-
-
-
-
-
-
-
-
-
 
 /* ----------------productos---------------- */
 
@@ -167,23 +147,6 @@ ul {
     max-height: 400px;
 }
 
-.capa-oscura-producto {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 340px;
-    background-color: black;
-    opacity: 0;
-
-}
-
-.uni-producto:hover .capa-oscura-producto {
-    opacity: 0.3;
-}
-
-
-
 .text-product {
     padding: 10px 0;
     width: 100%;
@@ -216,9 +179,10 @@ ul {
 
 
 </style>
-<div class="imagen-principal">
-    <img class="" src="{{ asset('images/imagen_principal.png') }}" alt="">
-    <div class="capa-oscura"></div>
+<div>
+<div class="imagen-principal vw-100">
+    <img class="vw-100" src="{{ asset('images/imagen_principal.png') }}" alt="">
+    
     <div class="text-img-principal">
         ENCUENTRA LO QUE NECESITES
     </div>
@@ -242,7 +206,7 @@ ul {
 </div>
 -->
 
-<div class="container catalogo">
+<div class="catalogo contianer vw-100">
     <h1 class="novedades">NOVEDADES</h1>
     <div class="row align-items-center productos">
         <div class="col-3 producto">
@@ -261,7 +225,7 @@ ul {
             <div class="uni-producto">
                 <a href="producto.html">
                     <img src="images/camisacargo.jpg" alt="" class="img-producto">
-                    <div class="capa-oscura-producto"></div>
+                    
                 </a>
             </div>
             <div class="text-product">
@@ -273,7 +237,7 @@ ul {
             <div class="uni-producto">
                 <a href="producto.html">
                     <img src="images/pantalon mezclilla.webp" alt="" class="img-producto">
-                    <div class="capa-oscura-producto"></div>
+                    
                 </a>
             </div>
             <div class="text-product">
@@ -285,7 +249,7 @@ ul {
             <div class="uni-producto">
                 <a href="producto.html">
                     <img src="images/af1.webp" alt="" class="img-producto">
-                    <div class="capa-oscura-producto"></div>
+                
                 </a>
             </div>
             <div class="text-product">
@@ -295,4 +259,6 @@ ul {
         </div>
     </div>
 </div>
+</div>
+
 @endsection

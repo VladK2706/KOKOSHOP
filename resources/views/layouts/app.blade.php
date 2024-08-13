@@ -27,8 +27,10 @@
     <div id="app" class="d-flex flex-column">
         <nav class="custom-header navbar navbar-expand-md navbar-light shadow-sm ">
             <div class="container">
-
-                <img class="logo" src="{{ asset('images/LOGOKoko-text.png') }}" alt="">
+                <a href="{{route('home')}}">
+                    <img class="logo" src="{{ asset('images/LOGOKoko-text.png') }}" alt="">
+                </a>
+                
 
 
 
