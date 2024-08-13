@@ -349,7 +349,7 @@ unset($__errorArgs, $__bag); ?>
                                 <div class="row mb-0">
                                     <div class="col-md-6 offset-md-4">
                                         <button type="submit" class="btn btn-primary">
-                                            <?php echo e(__('Register')); ?>
+                                            <?php echo e(__('Registrarse')); ?>
 
                                         </button>
                                     </div>
