@@ -15,14 +15,18 @@ return new class extends Migration
             $table->id('Id_producto');
             $table->string('nombre');
             $table->float('precio');
-            $table->string('tipo_prenda');
+            $table->string('tipo_producto');
             $table->timestamps();
         });
 
         Schema::create('cantidad_talla', function (Blueprint $table) {
             $table->unsignedBigInteger('Id_producto');
-            $table->string('talla');
-            $table->integer('cantidad');
+            $table->integer('talla1');
+            $table->integer('talla2');
+            $table->integer('talla3');
+            $table->integer('talla4');
+            $table->integer('talla5');
+
             $table->foreign('Id_producto')->references('Id_producto')->on('productos')->onDelete('cascade');
             $table->timestamps();
         });
@@ -30,12 +34,15 @@ return new class extends Migration
         Schema::table('productos', function (Blueprint $table) {
             $table->string('nombre')->default(' ')->change();
             $table->float('precio')->default(20000.0)->change();
-            $table->string('tipo_prenda')->default(' ')->change();
+            $table->string('tipo_producto')->default(' ')->change();
         });
 
         Schema::table('cantidad_talla', function (Blueprint $table) {
-            $table->string('talla')->default(' ')->change();
-            $table->integer('cantidad')->default(1)->change();
+            $table->integer('talla1')->default(0)->change();
+            $table->integer('talla2')->default(0)->change();
+            $table->integer('talla3')->default(0)->change();
+            $table->integer('talla4')->default(0)->change();
+            $table->integer('talla5')->default(0)->change();
         });
     }
 

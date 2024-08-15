@@ -22,26 +22,8 @@ class Producto extends Model
         'tipo_prenda',
     ];
 
-    public function cantidadTallas()
+    public function cantidadTalla()
     {
-        return $this->hasMany(Cantidad_talla::class, 'Id_producto', 'Id_producto');
-    }
-
-    public function actualizarCantidadTallas($Id_producto, $tallas)
-    {
-        $producto = Producto::find($Id_producto);
-        $totalCantidad = 0;
-
-        foreach ($tallas as $talla => $cantidad) {
-            Cantidad_talla::updateOrCreate(
-                ['Id_producto' => $Id_producto, 'talla' => $talla],
-                ['cantidad' => $cantidad]
-            );
-
-            $totalCantidad += $cantidad;
-        }
-
-        // Actualiza la cantidad total en la tabla productos
-        $producto->update(['cantidad_total' => $totalCantidad]);
+        return $this->hasOne(Cantidad_talla::class, 'Id_producto', 'Id_producto');
     }
 }

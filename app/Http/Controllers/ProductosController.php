@@ -2,13 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Productos;
-use Illuminate\Http\Request;
+use App\Models\Producto;
+use App\Models\Cantidad_talla;
 
 class ProductosController extends Controller
 {
     public function index()
     {
-        $productos = P
+        $productos = Producto::all();
+        return view('productos.index', compact('productos'));
     }
+
+    
 }
