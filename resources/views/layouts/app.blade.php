@@ -98,6 +98,7 @@
 
         <main class="" style="display: flex">
             @yield('content')
+            
         </main>
     </div>
 
