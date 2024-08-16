@@ -10,6 +10,12 @@
     "src": "resources/js/app.js",
     "isEntry": true
   },
+  "resources/js/producto.js": {
+    "file": "assets/producto-CWkEnRLA.js",
+    "name": "producto",
+    "src": "resources/js/producto.js",
+    "isEntry": true
+  },
   "resources/sass/app.scss": {
     "file": "assets/app-D-sv12UV.css",
     "src": "resources/sass/app.scss",

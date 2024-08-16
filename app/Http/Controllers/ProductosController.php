@@ -23,22 +23,10 @@ class ProductosController extends Controller
 
     public function store(Request $request)
     {
-        /*
-        $request->validate([
-            'nombre' => ['required', 'string', 'max:30', 'min:10'],
-            'precio' => ['required', 'regex:/^\d+(\.\d{1,2})?$/', 'min:10000', 'max:300000'],
-            'cantidad_total' => ['required', 'integer', 'max:30', 'min:1'],
-            'tipo_prenda' => ['required', 'string', 'max:15', 'min:7']
-        ]);
-
-        Producto::create($request->all());
-
-        return redirect()->route('productos.index');
-        */
-        // Validar los datos recibidos
         $validated = $request->validate([
-            'produc_nom' => ['required', 'string', 'max:50'],
-            'produc_precio' => ['required', 'numeric'],
+            'nombre' => ['required', 'string', 'max:30', 'min:10'],
+            'precio' => ['required', 'integer'],
+            'tipo_producto' => ['required', 'string', 'max:16', 'min:6'],
             'talla1' => ['required', 'integer'],
             'talla2' => ['required', 'integer'],
             'talla3' => ['required', 'integer'],
@@ -53,8 +41,8 @@ class ProductosController extends Controller
             $producto = Producto::create([
                 'produc_nom' => $validated['produc_nom'],
                 'produc_precio' => $validated['produc_precio'],
+                'tipo_producto' => $request->tipo_prenda, // Asegúrate de que esto se valida también
                 'cantidad_total' => $validated['talla1'] + $validated['talla2'] + $validated['talla3'] + $validated['talla4'] + $validated['talla5'],
-                'tipo_prenda' => $request->tipo_prenda, // Asegúrate de que esto se valida también
             ]);
 
             // Inserción en la tabla cantidad_talla
@@ -90,13 +78,14 @@ class ProductosController extends Controller
     {
         // Validar los datos recibidos
         $validated = $request->validate([
-            'produc_nom' => ['required', 'string', 'max:50'],
-            'produc_precio' => ['required', 'numeric'],
-            'talla1' => ['required', 'integer'],
-            'talla2' => ['required', 'integer'],
-            'talla3' => ['required', 'integer'],
-            'talla4' => ['required', 'integer'],
-            'talla5' => ['required', 'integer'],
+            'nombre' => ['required', 'string', 'max:30', 'min:10'],
+            'precio' => ['required', 'regex:/^\d+(\.\d{1,2})?$/', 'min:10000', 'max:300000'],
+            'tipo_producto' => ['required', 'string', 'max:16', 'min:6'],
+            'talla1' => ['required', 'integer', 'min:0', 'max:20'],
+            'talla2' => ['required', 'integer', 'min:0', 'max:20'],
+            'talla3' => ['required', 'integer', 'min:0', 'max:20'],
+            'talla4' => ['required', 'integer', 'min:0', 'max:20'],
+            'talla5' => ['required', 'integer', 'min:0', 'max:20'],
         ]);
 
         DB::beginTransaction();
@@ -107,10 +96,10 @@ class ProductosController extends Controller
             $producto = Producto::findOrFail($id);
             // Inserción en la tabla productos
             $producto->update([
-                'produc_nom' => $validated['produc_nom'],
-                'produc_precio' => $validated['produc_precio'],
+                'nombre' => $validated['produc_nom'],
+                'nombre' => $validated['produc_precio'],
                 'cantidad_total' => $validated['talla1'] + $validated['talla2'] + $validated['talla3'] + $validated['talla4'] + $validated['talla5'],
-                'tipo_prenda' => $request->tipo_prenda, // Asegúrate de que esto se valida también
+                'tipo_producto' => $request->tipo_prenda, // Asegúrate de que esto se valida también
             ]);
 
             // Encontrar la cantidad de tallas asociada
@@ -141,28 +130,28 @@ class ProductosController extends Controller
     }
 
     public function destroy($id)
-{
-    DB::beginTransaction();
+    {
+        DB::beginTransaction();
 
-    try {
-        // Encontrar el producto existente
-        $producto = Producto::findOrFail($id);
+        try {
+            // Encontrar el producto existente
+            $producto = Producto::findOrFail($id);
 
-        // Eliminar las cantidades por talla asociadas
-        Cantidad_talla::where('Id_producto', $producto->Id_producto)->delete();
+            // Eliminar las cantidades por talla asociadas
+            Cantidad_talla::where('Id_producto', $producto->Id_producto)->delete();
 
-        // Eliminar el producto
-        $producto->delete();
+            // Eliminar el producto
+            $producto->delete();
 
-        // Confirmar la transacción
-        DB::commit();
+            // Confirmar la transacción
+            DB::commit();
 
-        return redirect()->back()->with('success', 'Producto y cantidades por talla eliminados correctamente');
-    } catch (\Exception $e) {
-        // Revertir la transacción en caso de error
-        DB::rollBack();
+            return redirect()->back()->with('success', 'Producto y cantidades por talla eliminados correctamente');
+        } catch (\Exception $e) {
+            // Revertir la transacción en caso de error
+            DB::rollBack();
 
-        return redirect()->back()->with('error', 'Error al eliminar el producto: ' . $e->getMessage());
+            return redirect()->back()->with('error', 'Error al eliminar el producto: '.$e->getMessage());
+        }
     }
-}
 }

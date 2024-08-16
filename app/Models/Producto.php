@@ -19,7 +19,7 @@ class Producto extends Model
         'nombre',
         'precio',
         'cantidad_total',
-        'tipo_prenda',
+        'tipo_producto',
     ];
 
     public function cantidadTalla()
