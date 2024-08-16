@@ -45,7 +45,7 @@
                             <select id="tipo_producto" class="form-control @error('id_rol') is-invalid @enderror"
                                 name="tipo_producto" value="{{ old('tipo_producto') }}" required
                                 autocomplete="tipo_producto">
-                                <option value="" selected>Selecionar</option>
+                                <option value="" disabled selected>Selecionar</option>
                                 <option value="Superior">Prenda Superior (Camisetas, Blusas, Camisas, Chaquetas, Abrigos)
                                 </option>
                                 <option value="Inferior">Prenda Inferiro (Pantalones, Faldas, Shorts)</option>
@@ -152,7 +152,3 @@
     </div>
     <script src="{{ asset('js/producto.js') }}"></script>
 @endsection
-
-@push('scripts')
-    @vite('resources/js/producto.js')
-@endpush

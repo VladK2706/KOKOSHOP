@@ -24,7 +24,7 @@ class ProductosController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'nombre' => ['required', 'string', 'max:30', 'min:10'],
+            'nombre' => ['required', 'string', 'max:30', 'min:5'],
             'precio' => ['required', 'integer'],
             'tipo_producto' => ['required', 'string', 'max:16', 'min:6'],
             'talla1' => ['required', 'integer'],
@@ -36,11 +36,35 @@ class ProductosController extends Controller
 
         DB::beginTransaction();
 
+        // Inserción en la tabla productos
+        $producto = Producto::create([
+            'nombre' => $validated['nombre'],
+            'precio' => $validated['precio'],
+            'tipo_producto' => $request->tipo_producto, // Asegúrate de que esto se valida también
+            'cantidad_total' => $validated['talla1'] + $validated['talla2'] + $validated['talla3'] + $validated['talla4'] + $validated['talla5'],
+        ]);
+
+        // Inserción en la tabla cantidad_talla
+        Cantidad_talla::create([
+            'Id_producto' => $producto->Id_producto, // ID del producto recién creado
+            'talla1' => $validated['talla1'],
+            'talla2' => $validated['talla2'],
+            'talla3' => $validated['talla3'],
+            'talla4' => $validated['talla4'],
+            'talla5' => $validated['talla5'],
+        ]);
+
+        // Confirmar la transacción
+        DB::commit();
+
+        return redirect()->route('productos.index');
+
+        /*
         try {
             // Inserción en la tabla productos
             $producto = Producto::create([
-                'produc_nom' => $validated['produc_nom'],
-                'produc_precio' => $validated['produc_precio'],
+                'nombre' => $validated['nombre'],
+                'precio' => $validated['precio'],
                 'tipo_producto' => $request->tipo_prenda, // Asegúrate de que esto se valida también
                 'cantidad_total' => $validated['talla1'] + $validated['talla2'] + $validated['talla3'] + $validated['talla4'] + $validated['talla5'],
             ]);
@@ -58,7 +82,6 @@ class ProductosController extends Controller
             // Confirmar la transacción
             DB::commit();
 
-            return redirect()->back()->with('success', 'Producto y cantidades por talla creados correctamente');
 
             return redirect()->route('productos.index');
         } catch (\Exception $e) {
@@ -67,6 +90,7 @@ class ProductosController extends Controller
 
             return redirect()->back()->with('error', 'Error al crear el producto: '.$e->getMessage());
         }
+            */
     }
 
     public function edit(Producto $producto)
