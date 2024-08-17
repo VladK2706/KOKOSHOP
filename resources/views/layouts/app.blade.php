@@ -68,7 +68,7 @@
                                 <a href="{{ route('usuarios.index') }}" class="nav-link">{{ __('Usuarios') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ route('productos.index') }}" class="nav-link">{{ __('Prodcutos') }}</a>
+                                <a href="{{ route('productos.index') }}" class="nav-link">{{ __('Productos') }}</a>
                             </li>
 
                             <li class="nav-item dropdown">

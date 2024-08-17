@@ -2,7 +2,7 @@
 @section('content')
     <div class="section-form py-4 flex-fill">
         <div class="container">
-            <h2>Registrar Usuario</h2>
+            <h2>Modificar Usuario</h2>
             <a href="{{ route('usuarios.index') }}" class="btn btn-danger">Cancelar</a>
             <div class="card-body">
                 <form method="POST" action="{{ route('usuarios.update', $usuario) }}">

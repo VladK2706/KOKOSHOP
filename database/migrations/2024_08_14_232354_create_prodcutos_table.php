@@ -21,6 +21,7 @@ return new class extends Migration
         });
 
         Schema::create('cantidad_talla', function (Blueprint $table) {
+            $table->id();
             $table->unsignedBigInteger('Id_producto');
             $table->integer('talla1');
             $table->integer('talla2');
