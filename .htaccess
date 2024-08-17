@@ -1,0 +1,2 @@
+ErrorDocument 404 http://localhost/kokoshop1/404.html
+ErrorDocument 500 http://localhost/kokoshop1/500.php
