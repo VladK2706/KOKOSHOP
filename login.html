@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+
+<head>
+    <title>Iniciar sesión</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lilita+One&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/login.css" type="text/css">
+    <script src="sweetalert2.min.js"></script>
+    <link rel="stylesheet" href="sweetalert2.min.css">
+</head>
+
+<body>
+    <div class="formulario">
+        <h1>INICIAR SESIÓN </h1>
+        <form action="" method="POST" id="form">
+            <label for="">Correo electronico:</label>
+            <input type="email" id="correo" name="">
+            <p class="warnings" id="warnings_correo"></p>
+
+            <label for="password">Contraseña:</label>
+            <input type="password" id="contraseña" name="">
+            <p class="warnings" id="warnings_contraseña"></p>
+
+            <input type="submit" value="INICIAR SESIÓN" href="menu.html">
+
+
+        </form>
+        <div class="text-sign-up">
+            ¿No tienes cuenta? <a class="btn btn-sign-up" href="registrarse.html">Crear cuenta</a>
+        </div>
+        <a class="btn btn-back" href="index.html">Atras</a>
+        <a href="menu.html" class="btn">Menu admin</a>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+    <script src="js/login.js"></script>
+
+
+
+
+</body>
+<script src="bootstrap-5.0.2-dist/js/bootstrap.bundle.js"></script>
+
+</html>

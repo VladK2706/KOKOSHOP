@@ -1,0 +1,108 @@
+<form id="registroProducto" action="#" method="post">
+    <h1>Registrar Producto</h1>
+
+    <label for="nombre">Nombre</label>
+    <input type="text" id="nombre" name="nombre" class="input">
+    <span id="nombreError" class="error"></span>
+
+    <label for="precio">Precio</label>
+    <input type="number" id="precio" name="precio" class="input">
+    <span id="precioError" class="error"></span>
+
+    <label for="tipoProdcuto">Tipo de producto</label>
+    <select name="tipoProdcuto" id="tipoProdcuto" class="input">
+        <option value="null" selected>Seleccionar</option>
+        <option value="prendaSuperior">Prenda Superior(Blusa, chaqueta, sacos, chalecos, etc)</option>
+        <option value="zapato">Zapato</option>
+        <option value="pantalon">Pantalon</option>
+    </select>
+    <span id="tipoProductoError" class="error"></span>
+
+    <!----------Agregar Tallas---------->
+    <div class="talla-info">
+        <label>Tallas Nombre</label>
+        <label style="text-align: center; display: block;">Cantidad</label>
+    </div>
+    <div class="tipo-talla">
+        <div class="tipo-talla-elemento">
+            <input class="talla_number" type="number" name="talla_inferior1" id="talla_inferior1">
+        </div>
+        <div class="tipo-talla-elemento">
+            <input type="number" id="talla_inferior1_cantidad" name="talla_inferior1_cantidad" class="talla-cantidad">
+        </div>
+    </div>
+
+    <div id="contenedorCampos"></div>
+    <button type="button" onclick="agregarTalla()" class="input btn-talla">Agregar Talla</button>
+
+    <input type="submit" value="Registrar Producto">
+</form>
+
+<script>
+    document.getElementById('registroProducto').addEventListener('submit', function (event) {
+        var valid = true;
+
+        // Validar nombre
+        var nombre = document.getElementById('nombre').value.trim();
+        if (nombre === "") {
+            document.getElementById('nombreError').textContent = "El nombre es obligatorio.";
+            valid = false;
+        } else {
+            document.getElementById('nombreError').textContent = "";
+        }
+
+        // Validar precio
+        var precio = document.getElementById('precio').value.trim();
+        if (precio === "" || isNaN(precio) || precio <= 0) {
+            document.getElementById('precioError').textContent = "El precio debe ser un número mayor que 0.";
+            valid = false;
+        } else {
+            document.getElementById('precioError').textContent = "";
+        }
+
+        // Validar tipo de producto
+        var tipoProdcuto = document.getElementById('tipoProdcuto').value;
+        if (tipoProdcuto === "null") {
+            document.getElementById('tipoProductoError').textContent = "Debe seleccionar un tipo de producto.";
+            valid = false;
+        } else {
+            document.getElementById('tipoProductoError').textContent = "";
+        }
+
+        // Validar tallas
+        var tallaInputs = document.querySelectorAll('.talla_number');
+        var tallaCantidadInputs = document.querySelectorAll('.talla-cantidad');
+        var tallaValida = false;
+
+        tallaInputs.forEach(function (input, index) {
+            var cantidad = tallaCantidadInputs[index].value.trim();
+            if (input.value.trim() !== "" && cantidad !== "" && !isNaN(cantidad) && cantidad > 0) {
+                tallaValida = true;
+            }
+        });
+
+        if (!tallaValida) {
+            alert("Debe proporcionar al menos una talla con una cantidad válida.");
+            valid = false;
+        }
+
+        if (!valid) {
+            event.preventDefault();
+        }
+    });
+
+    function agregarTalla() {
+        var contenedor = document.getElementById('contenedorCampos');
+        var div = document.createElement('div');
+        div.className = 'tipo-talla';
+        div.innerHTML = `
+            <div class="tipo-talla-elemento">
+                <input class="talla_number" type="number" name="talla_inferior${contenedor.children.length + 2}" id="talla_inferior${contenedor.children.length + 2}">
+            </div>
+            <div class="tipo-talla-elemento">
+                <input type="number" id="talla_inferior${contenedor.children.length + 2}_cantidad" name="talla_inferior${contenedor.children.length + 2}_cantidad" class="talla-cantidad">
+            </div>
+        `;
+        contenedor.appendChild(div);
+    }
+</script>
