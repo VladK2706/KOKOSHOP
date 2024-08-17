@@ -16,5 +16,5 @@ Route::middleware(['auth'])->group(function () {
 
     Route::resource('usuarios', UserController::class);
     Route::resource('productos', ProductosController::class);
-
+    
 });

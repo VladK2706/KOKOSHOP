@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id('Id_producto');
             $table->string('nombre');
             $table->integer('precio');
-            $table->integer('cantidad_total');
+            $table->integer('cantidad_total'); 
             $table->string('tipo_producto');
             $table->timestamps();
         });
