@@ -28,8 +28,8 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => ['required', 'string', 'max:20'],
-            'lastname' => ['required', 'string', 'max:20'],
+            'name' => ['required', 'string', 'max:20', 'min:3'],
+            'lastname' => ['required', 'string', 'max:20', 'min:3'],
             'id_rol' => ['required', 'int'],
             'tipo_doc' => ['required', 'string', 'max:5'],
             'num_doc' => ['required', 'int'],

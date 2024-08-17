@@ -1,8 +1,19 @@
 {
+  "resources/css/index.css": {
+    "file": "assets/index-Y6YjXfxQ.css",
+    "src": "resources/css/index.css",
+    "isEntry": true
+  },
   "resources/js/app.js": {
     "file": "assets/app-DlPQVG7t.js",
     "name": "app",
     "src": "resources/js/app.js",
+    "isEntry": true
+  },
+  "resources/js/producto.js": {
+    "file": "assets/producto-CWkEnRLA.js",
+    "name": "producto",
+    "src": "resources/js/producto.js",
     "isEntry": true
   },
   "resources/sass/app.scss": {
