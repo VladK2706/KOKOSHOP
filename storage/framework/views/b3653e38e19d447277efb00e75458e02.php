@@ -64,12 +64,31 @@
                                 </li>
                             <?php endif; ?>
                         <?php else: ?>
-                            <li class="nav-item">
-                                <a href="<?php echo e(route('usuarios.index')); ?>" class="nav-link"><?php echo e(__('Usuarios')); ?></a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="<?php echo e(route('productos.index')); ?>" class="nav-link"><?php echo e(__('Prodcutos')); ?></a>
-                            </li>
+                            <?php if(Auth::check()): ?>
+                                
+                                <?php if(Auth::user()->id_rol == 1): ?>
+                                    
+                                    <li class="nav-item">
+                                        <a href="<?php echo e(route('usuarios.index')); ?>" class="nav-link"><?php echo e(__('Usuarios')); ?></a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="<?php echo e(route('productos.index')); ?>"
+                                            class="nav-link"><?php echo e(__('Productos')); ?></a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="<?php echo e(route('ventas.index')); ?>" class="nav-link"><?php echo e(__('Ventas')); ?></a>
+                                    </li>
+                                <?php elseif(Auth::user()->id_rol == 2): ?>
+                                    
+                                <?php elseif(Auth::user()->id_rol == 3): ?>
+                                    
+                                    <li class="nav-item">
+                                        <a href="<?php echo e(route('ventas.index')); ?>" class="nav-link"><?php echo e(__('Ventas')); ?></a>
+                                    </li>
+                                <?php endif; ?>
+                            <?php endif; ?>
+
+
 
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"

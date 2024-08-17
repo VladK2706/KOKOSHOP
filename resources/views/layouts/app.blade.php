@@ -64,12 +64,31 @@
                                 </li>
                             @endif
                         @else
-                            <li class="nav-item">
-                                <a href="{{ route('usuarios.index') }}" class="nav-link">{{ __('Usuarios') }}</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ route('productos.index') }}" class="nav-link">{{ __('Productos') }}</a>
-                            </li>
+                            @if (Auth::check())
+                                {{-- Verifica si el usuario ha iniciado sesión --}}
+                                @if (Auth::user()->id_rol == 1)
+                                    {{-- Botones para el rol 1 --}}
+                                    <li class="nav-item">
+                                        <a href="{{ route('usuarios.index') }}" class="nav-link">{{ __('Usuarios') }}</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="{{ route('productos.index') }}"
+                                            class="nav-link">{{ __('Productos') }}</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="{{ route('ventas.index') }}" class="nav-link">{{ __('Ventas') }}</a>
+                                    </li>
+                                @elseif(Auth::user()->id_rol == 2)
+                                    {{-- Botones para el rol 2 --}}
+                                @elseif(Auth::user()->id_rol == 3)
+                                    {{-- Botones para el rol 3 --}}
+                                    <li class="nav-item">
+                                        <a href="{{ route('ventas.index') }}" class="nav-link">{{ __('Ventas') }}</a>
+                                    </li>
+                                @endif
+                            @endif
+
+
 
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"

@@ -8,6 +8,7 @@ export default defineConfig({
                 'resources/sass/app.scss',
                 'resources/js/app.js',
                 'resources/js/producto.js',
+                'resources/js/ventas.js',
                 'resources/css/index.css',
             ],
             refresh: true,

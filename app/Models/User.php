@@ -51,4 +51,20 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    /**
+     * Relación con el modelo Venta como cliente.
+     */
+    public function ventasComoCliente()
+    {
+        return $this->hasMany(Venta::class, 'Id_cli', 'id');
+    }
+
+    /**
+     * Relación con el modelo Venta como empleado.
+     */
+    public function ventasComoEmpleado()
+    {
+        return $this->hasMany(Venta::class, 'Id_Emp', 'id');
+    }
 }

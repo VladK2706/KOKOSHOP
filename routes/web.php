@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProductosController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\VentasController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -16,5 +17,6 @@ Route::middleware(['auth'])->group(function () {
 
     Route::resource('usuarios', UserController::class);
     Route::resource('productos', ProductosController::class);
-    
+    Route::resource('ventas', VentasController::class);
+
 });
