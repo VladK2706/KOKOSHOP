@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\DB;
 
 class ProductosController extends Controller
 {
+
+
     public function index()
     {
         $productos = Producto::all();
@@ -36,12 +38,15 @@ class ProductosController extends Controller
 
         DB::beginTransaction();
 
+        $nombreProcesado = strtolower(preg_replace('/\s+/', '', $validated['nombre']));
+
         // Inserción en la tabla productos
         $producto = Producto::create([
             'nombre' => $validated['nombre'],
             'precio' => $validated['precio'],
             'tipo_producto' => $request->tipo_producto, // Asegúrate de que esto se valida también
             'cantidad_total' => $validated['talla1'] + $validated['talla2'] + $validated['talla3'] + $validated['talla4'] + $validated['talla5'],
+            'nombre_imagen' => $nombreProcesado,
         ]);
 
         // Inserción en la tabla cantidad_talla
@@ -113,6 +118,7 @@ class ProductosController extends Controller
         ]);
 
         DB::beginTransaction();
+        $nombreProcesado = strtolower(preg_replace('/\s+/', '', $validated['nombre']));
 
         // Encontrar el producto existente
         $producto = Producto::findOrFail($id);
@@ -122,6 +128,7 @@ class ProductosController extends Controller
             'precio' => $validated['precio'],
             'cantidad_total' => $validated['talla1'] + $validated['talla2'] + $validated['talla3'] + $validated['talla4'] + $validated['talla5'],
             'tipo_producto' => $validated['tipo_producto'], // Asegúrate de que esto se valida también
+            'nombre_imagen' => $nombreProcesado,
         ]);
 
         // Encontrar la cantidad de tallas asociada

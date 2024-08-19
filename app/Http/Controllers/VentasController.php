@@ -33,9 +33,8 @@ class VentasController extends Controller
         // Aquí puedes pasar datos adicionales a la vista si es necesario
 
         $clientes = User::where('Id_rol', 2)->get();
-        $empleados = User::where('Id_rol', 1)
-            ->orwhere('Id_rol', 3)->get();
-        $productos = Producto::where('cantidad_total', '>', 0);
+        $empleados = User::where('Id_rol', 1)->orwhere('Id_rol', 3)->get();
+        $productos = Producto::where('cantidad_total', '>', 0)->get();
 
         return view('ventas.create', compact('clientes', 'empleados', 'productos'));
     }

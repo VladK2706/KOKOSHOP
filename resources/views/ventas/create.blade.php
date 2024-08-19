@@ -16,7 +16,7 @@
                                 required>
                                 <option value="" disabled selected>Seleccionar Cliente</option>
                                 @foreach ($clientes as $cliente)
-                                    <option value="{{ $cliente->ID }}">{{ $cliente->name }}</option>
+                                    <option value="{{ $cliente->id }}">{{ $cliente->name }}</option>
                                 @endforeach
                             </select>
                             @error('Id_cli')
@@ -34,7 +34,7 @@
                                 required>
                                 <option value="" disabled selected>Seleccionar Empleado</option>
                                 @foreach ($empleados as $empleado)
-                                    <option value="{{ $empleado->ID }}">{{ $empleado->name }}</option>
+                                    <option value="{{ $empleado->id }}">{{ $empleado->name }}</option>
                                 @endforeach
                             </select>
                             @error('Id_Emp')
@@ -51,7 +51,7 @@
                         <div class="col-md-6">
                             <input id="fecha_venta" type="date"
                                 class="form-control @error('fecha_venta') is-invalid @enderror" name="fecha_venta"
-                                value="{{ old('fecha_venta') }}" required>
+                                value="{{ old('fecha_venta') }}"required>
                             @error('fecha_venta')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -110,21 +110,7 @@
                             </div>
                         </div>
 
-                        <div class="row mb-3 producto-row">
-                            <label for="productos[0][cantidad_producto]"
-                                class="col-md-4 col-form-label text-md-end">{{ __('Cantidad') }}</label>
-                            <div class="col-md-6">
-                                <input id="productos[0][cantidad_producto]" type="number"
-                                    class="form-control @error('productos.0.cantidad_producto') is-invalid @enderror"
-                                    name="productos[0][cantidad_producto]"
-                                    value="{{ old('productos.0.cantidad_producto') }}" required>
-                                @error('productos.0.cantidad_producto')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
+
 
                         <div class="row mb-3 producto-row">
                             <label for="productos[0][talla_producto]"
@@ -140,8 +126,37 @@
                                 @enderror
                             </div>
                         </div>
-                    </div>
 
+                        <div class="row mb-3 producto-row">
+                            <label for="productos[0][talla_producto]"
+                                class="col-md-4 col-form-label text-md-end">{{ __('Talla') }}</label>
+                            <select name="productos[0][talla_producto]" id="productos[0][talla_producto]"
+                                class="form-control @error('productos.0.Id_producto') is-invalid @enderror">
+                                @foreach ($productos as $producto)
+                                @if ($producto->tipo_producto == 'Superior' || $producto->tipo_producto == 'Cuerpo_completo')
+                                    
+                                @endif
+                                    <option value="{{ $producto->cantidadTalla }}">{{ $producto->nombre }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <div class="row mb-3 producto-row">
+                            <label for="productos[0][cantidad_producto]"
+                                class="col-md-4 col-form-label text-md-end">{{ __('Cantidad') }}</label>
+                            <div class="col-md-6">
+                                <input id="productos[0][cantidad_producto]" type="number"
+                                    class="form-control @error('productos.0.cantidad_producto') is-invalid @enderror"
+                                    name="productos[0][cantidad_producto]"
+                                    value="{{ old('productos.0.cantidad_producto') }}" required>
+                                @error('productos.0.cantidad_producto')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+                    </div>
                     <div class="row mb-3">
                         <div class="col-md-6 offset-md-4">
                             <button type="button" class="btn btn-secondary" id="add-producto">
@@ -161,6 +176,8 @@
             </div>
         </div>
     </div>
+
+
 
     <script src="{{ asset('js/ventas.js') }}"></script>
 @endsection

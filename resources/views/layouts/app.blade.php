@@ -18,7 +18,7 @@
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('css/form.css') }}">
-    <!--link rel="stylesheet" href="{{ asset('css/index.css') }}" -->
+
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
@@ -28,7 +28,7 @@
         <nav class="custom-header navbar navbar-expand-md navbar-light shadow-sm ">
             <div class="container">
                 <a href="{{ route('home') }}">
-                    <img class="logo" src="{{ asset('images/LOGOKoko-text.png') }}" alt="">
+                    <img class="logo" src="{{ asset('images/imagotipo.png') }}" alt="">
                 </a>
 
 
@@ -115,6 +115,18 @@
                 </div>
             </div>
         </nav>
+        @if (!Auth::check() || Auth::user()->id_rol == 1 || Auth::user()->id_rol == 2)
+            <div class="container list-btn">
+                <nav class="text-center nav-list">
+                    <a href="{{ route('home') }}" class="d-inline-block mx-auto text-decoration-none">Principal</a>
+                    <a href="{{ route('catalogo.ver') }}"
+                        class="d-inline-block align-item-start mx-auto text-decoration-none">Productos</a>
+                    <a href="" class="d-inline-block mx-auto text-decoration-none">Principal</a>
+                    <a href="" class="d-inline-block mx-auto text-decoration-none">Principal</a>
+                </nav>
+            </div>
+        @endif
+
 
         <main class="" style="display: flex">
             @yield('content')
@@ -133,7 +145,8 @@
             <a href="https://wa.me/c/573219313578"><img src="IMG/logoWpp.png" width="40" height="40"></a>
             <a href="https://instagram.com/kokoshop_10?igshid=MzRlODBiNWFlZA=="><img src="IMG/Imagen ig.png"
                     width="40" height="40"></a>
-            <a href="https://www.facebook.com/"><img src="IMG/facebook-logo-3-1.png" width="40" height="40"></a>
+            <a href="https://www.facebook.com/"><img src="IMG/facebook-logo-3-1.png" width="40"
+                    height="40"></a>
             <a href="https://twitter.com/home?lang=es"><img src="IMG/Logo twitter.png" width="40"
                     height="40"></a>
             <br>

@@ -20,6 +20,7 @@ class Producto extends Model
         'precio',
         'cantidad_total',
         'tipo_producto',
+        'nombre_imagen',
     ];
 
     public function cantidadTalla()

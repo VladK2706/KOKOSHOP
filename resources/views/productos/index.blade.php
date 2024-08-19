@@ -15,6 +15,7 @@
                         <th>Precio</th>
                         <th>Cantidad Total</th>
                         <th>Tipo de Prodcuto</th>
+                        <th>Nombre de Imagen</th>
                         <th>Talla 1</th>
                         <th>Talla 2</th>
                         <th>Talla 3</th>
@@ -30,6 +31,7 @@
                                 <td>$ {{ $producto->precio }}</td>
                                 <td>{{ $producto->cantidad_total }}</td>
                                 <td>{{ $producto->tipo_producto }}</td>
+                                <td>{{ $producto->nombre_imagen }}</td>
 
                                 @if ($producto->tipo_producto == 'Superior' || $producto->tipo_producto == 'Cuerpo_completo')
                                     <td>XS: {{ $producto->cantidadTalla->talla1 }}</td>

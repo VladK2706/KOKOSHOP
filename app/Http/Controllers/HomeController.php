@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\Producto;
+use Illuminate\Support\Facades\Log;
 
 class HomeController extends Controller
 {
@@ -11,10 +12,7 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+    public function __construct() {}
 
     /**
      * Show the application dashboard.
@@ -23,6 +21,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $productos = Producto::where('cantidad_total', '>', 0)->get();
+        Log::info($productos); // Para depurar sin interrumpir la ejecución
+
+        return view('home', compact('productos'));
     }
 }

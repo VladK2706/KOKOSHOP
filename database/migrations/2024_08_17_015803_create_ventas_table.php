@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('ventas', function (Blueprint $table) {
             $table->id('Id_venta'); // Clave primaria autoincremental
             $table->unsignedBigInteger('Id_cli'); // Clave foránea para usuarios
-            $table->unsignedBigInteger('Id_Emp'); // Clave foránea para usuarios (empleado)
+            
             $table->float('precio_Total');
             $table->date('fecha_venta');
             $table->string('tipo_venta', 40);
@@ -22,7 +22,7 @@ return new class extends Migration
 
             // Definición de las claves foráneas
             $table->foreign('Id_cli')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('Id_Emp')->references('id')->on('users')->onDelete('cascade');
+            
             $table->timestamps();
         });
 

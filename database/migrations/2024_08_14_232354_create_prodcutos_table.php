@@ -15,8 +15,9 @@ return new class extends Migration
             $table->id('Id_producto');
             $table->string('nombre');
             $table->integer('precio');
-            $table->integer('cantidad_total'); 
+            $table->integer('cantidad_total');
             $table->string('tipo_producto');
+            $table->string('nombre_imagen');
             $table->timestamps();
         });
 
@@ -37,6 +38,7 @@ return new class extends Migration
             $table->string('nombre')->default(' ')->change();
             $table->float('precio')->default(20000.0)->change();
             $table->string('tipo_producto')->default(' ')->change();
+            $table->string('nombre_imagen')->default(' ')->change();
         });
 
         Schema::table('cantidad_talla', function (Blueprint $table) {
