@@ -20,15 +20,15 @@ return new class extends Migration
 
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('lastname');
+            $table->string('name', 10);
+            $table->string('lastname', 10);
             $table->unsignedBigInteger('id_rol');
-            $table->string('tipo_doc');
+            $table->string('tipo_doc', 10);
             $table->integer('num_doc')->unique();
-            $table->string('ciudad');
-            $table->string('direccion');
-            $table->string('telefono');
-            $table->string('email')->unique();
+            $table->string('ciudad', 20);
+            $table->string('direccion', 30);
+            $table->string('telefono', 10);
+            $table->string('email', 30)->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
 
@@ -54,8 +54,12 @@ return new class extends Migration
 
         Schema::table('users', function (Blueprint $table) {
             $table->unsignedBigInteger('id_rol')->default(2)->change();
+            $table->string('lastname')->default(' ')->change();
             $table->string('tipo_doc')->default('CC')->change();
+            $table->integer('num_doc')->default(0)->change();
             $table->string('ciudad')->default('Bogota D.C')->change();
+            $table->string('direccion')->default(' ')->change();
+            $table->string('telefono')->default(' ')->change();
         });
     }
 
