@@ -25,6 +25,6 @@ class Producto extends Model
 
     public function tallas()
     {
-        return $this->hasMany(Cantidad_talla::class, 'Id_producto', 'Id_producto');
+        return $this->hasMany(CantidadTalla::class, 'Id_producto', 'Id_producto');
     }
 }

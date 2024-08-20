@@ -2,16 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Producto;
 use App\Models\CantidadTalla;
+use App\Models\Producto;
 use Illuminate\Http\Request;
 
-class ProductoController extends Controller
+class ProductosController extends Controller
 {
     // Show the list of products with their sizes and quantities
     public function index()
     {
         $productos = Producto::with('tallas')->get();
+
         return view('productos.index', compact('productos'));
     }
 
@@ -19,6 +20,7 @@ class ProductoController extends Controller
     public function show($id)
     {
         $producto = Producto::with('tallas')->findOrFail($id);
+
         return view('productos.show', compact('producto'));
     }
 
@@ -31,24 +33,28 @@ class ProductoController extends Controller
     // Store a new product in the database
     public function store(Request $request)
     {
-        $request->validate([
-            'nombre' => 'required|string|max:255',
-            'precio' => 'required|integer',
-            'cantidad_total' => 'required|integer',
-            'tipo_producto' => 'required|string|max:255',
-            'nombre_imagen' => 'required|string|max:255',
+        $validated = $request->validate([
+            'nombre' => ['required', 'string', 'max:30', 'min:5'],
+            'precio' => ['required', 'integer'],
+            'tipo_producto' => ['required', 'string', 'max:16', 'min:6'],
             'tallas' => 'required|array',
             'tallas.*.talla' => 'required|string|max:255',
             'tallas.*.cantidad' => 'required|integer',
         ]);
 
-        $producto = Producto::create($request->only([
-            'nombre',
-            'precio',
-            'cantidad_total',
-            'tipo_producto',
-            'nombre_imagen',
-        ]));
+        $nombreProcesado = strtolower(preg_replace('/\s+/', '', $validated['nombre']));
+        $cantidadTotal = 0;
+        foreach ($request->tallas as $talla) {
+            $cantidadTotal += $talla['cantidad'];
+        }
+
+        $producto = Producto::create([
+            'nombre' => $validated['nombre'],
+            'precio' => $validated['precio'],
+            'tipo_producto' => $request->tipo_producto, // Asegúrate de que esto se valida también
+            'cantidad_total' => $cantidadTotal,
+            'nombre_imagen' => $nombreProcesado,
+        ]);
 
         foreach ($request->tallas as $talla) {
             CantidadTalla::create([
@@ -65,31 +71,36 @@ class ProductoController extends Controller
     public function edit($id)
     {
         $producto = Producto::with('tallas')->findOrFail($id);
+
         return view('productos.edit', compact('producto'));
     }
 
     // Update an existing product in the database
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'nombre' => 'required|string|max:255',
-            'precio' => 'required|integer',
-            'cantidad_total' => 'required|integer',
-            'tipo_producto' => 'required|string|max:255',
-            'nombre_imagen' => 'required|string|max:255',
+        $validated = $request->validate([
+            'nombre' => ['required', 'string', 'max:30', 'min:5'],
+            'precio' => ['required', 'integer'],
+            'tipo_producto' => ['required', 'string', 'max:16', 'min:6'],
             'tallas' => 'required|array',
             'tallas.*.talla' => 'required|string|max:255',
             'tallas.*.cantidad' => 'required|integer',
         ]);
 
+        $nombreProcesado = strtolower(preg_replace('/\s+/', '', $validated['nombre']));
+        $cantidadTotal = 0;
+        foreach ($request->tallas as $talla) {
+            $cantidadTotal += $talla['cantidad'];
+        }
+
         $producto = Producto::findOrFail($id);
-        $producto->update($request->only([
-            'nombre',
-            'precio',
-            'cantidad_total',
-            'tipo_producto',
-            'nombre_imagen',
-        ]));
+        $producto->update([
+            'nombre' => $validated['nombre'],
+            'precio' => $validated['precio'],
+            'tipo_producto' => $request->tipo_producto, // Asegúrate de que esto se valida también
+            'cantidad_total' => $cantidadTotal,
+            'nombre_imagen' => $nombreProcesado,
+        ]);
 
         $producto->tallas()->delete();
 
