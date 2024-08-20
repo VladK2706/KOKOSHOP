@@ -24,12 +24,8 @@ return new class extends Migration
         Schema::create('cantidad_talla', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('Id_producto');
-            $table->integer('talla1');
-            $table->integer('talla2');
-            $table->integer('talla3');
-            $table->integer('talla4');
-            $table->integer('talla5');
-
+            $table->string('talla');
+            $table->integer('cantidad');
             $table->foreign('Id_producto')->references('Id_producto')->on('productos')->onDelete('cascade');
             $table->timestamps();
         });
@@ -42,11 +38,9 @@ return new class extends Migration
         });
 
         Schema::table('cantidad_talla', function (Blueprint $table) {
-            $table->integer('talla1')->default(0)->change();
-            $table->integer('talla2')->default(0)->change();
-            $table->integer('talla3')->default(0)->change();
-            $table->integer('talla4')->default(0)->change();
-            $table->integer('talla5')->default(0)->change();
+            $table->string('talla')->default(' ')->change();
+            $table->integer('cantidad')->default(0)->change();
+
         });
     }
 

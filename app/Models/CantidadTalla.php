@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Cantidad_talla extends Model
+class CantidadTalla extends Model
 {
     protected $table = 'cantidad_talla';
 
@@ -12,13 +12,11 @@ class Cantidad_talla extends Model
 
     protected $fillable = [
         'Id_producto',
-        'talla1',
-        'talla2',
-        'talla3',
-        'talla4',
-        'talla5',
+        'talla',
+        'cantidad',
+
     ];
-    
+
     public function producto()
     {
         return $this->belongsTo(Producto::class, 'Id_producto', 'Id_producto');

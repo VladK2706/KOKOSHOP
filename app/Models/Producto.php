@@ -23,8 +23,8 @@ class Producto extends Model
         'nombre_imagen',
     ];
 
-    public function cantidadTalla()
+    public function tallas()
     {
-        return $this->hasOne(Cantidad_talla::class, 'Id_producto', 'Id_producto');
+        return $this->hasMany(Cantidad_talla::class, 'Id_producto', 'Id_producto');
     }
 }
