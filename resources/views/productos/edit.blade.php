@@ -67,38 +67,45 @@
                     </div>
 
                     <div id="tallas-container">
+                        <h4>Tallas</h4>
                         @foreach ($producto->tallas as $index => $talla)
-                            <div class="row mb-3 talla-row">
-                                <label for="tallas[{{ $index }}][talla]"
-                                    class="col-md-4 col-form-label text-md-end"> {{ __('Talla') }}</label>
-                                <div class="col-md-5">
-                                    <input id="tallas[{{ $index }}][talla]" type="text"
-                                        class="form-control @error('tallas.' . $index . '.talla') is-invalid @enderror"
-                                        name="tallas[{{ $index }}][talla]"
-                                        value="{{ old('tallas.' . $index . '.talla', $talla->talla) }}" required
-                                        autocomplete="talla">
-                                    @error('tallas.' . $index . '.talla')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
+                            <hr>
+                            <div class="talla-cantidad">
+                                <div class="row mb-3 talla-row">
+                                    <label for="tallas[{{ $index }}][talla]"
+                                        class="col-md-4 col-form-label text-md-end"> {{ __('Talla') }}</label>
+                                    <div class="col-md-6">
+                                        <input id="tallas[{{ $index }}][talla]" type="text"
+                                            class="form-control @error('tallas.' . $index . '.talla') is-invalid @enderror"
+                                            name="tallas[{{ $index }}][talla]"
+                                            value="{{ old('tallas.' . $index . '.talla', $talla->talla) }}" required
+                                            autocomplete="talla">
+                                        @error('tallas.' . $index . '.talla')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
                                 </div>
-                                <label for="tallas[{{ $index }}][cantidad]"
-                                    class="col-md-2 col-form-label text-md-end"> {{ __('Cantidad') }}</label>
-                                <div class="col-md-3">
-                                    <input id="tallas[{{ $index }}][cantidad]" type="number"
-                                        class="form-control @error('tallas.' . $index . '.cantidad') is-invalid @enderror"
-                                        name="tallas[{{ $index }}][cantidad]"
-                                        value="{{ old('tallas.' . $index . '.cantidad', $talla->cantidad) }}" required
-                                        autocomplete="cantidad">
-                                    @error('tallas.' . $index . '.cantidad')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
+                                <div class="row mb-3 talla-row">
+                                    <label for="tallas[{{ $index }}][cantidad]"
+                                        class="col-md-4 col-form-label text-md-end"> {{ __('Cantidad') }}</label>
+                                    <div class="col-md-6">
+                                        <input id="tallas[{{ $index }}][cantidad]" type="number"
+                                            class="form-control @error('tallas.' . $index . '.cantidad') is-invalid @enderror"
+                                            name="tallas[{{ $index }}][cantidad]"
+                                            value="{{ old('tallas.' . $index . '.cantidad', $talla->cantidad) }}" required
+                                            autocomplete="cantidad">
+                                        @error('tallas.' . $index . '.cantidad')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
                                 </div>
                             </div>
                         @endforeach
+
                     </div>
 
                     <div class="row mb-3">
@@ -122,22 +129,29 @@
     <script>
         let tallaIndex = {{ count($producto->tallas) }};
 
+
         document.getElementById('add-talla').addEventListener('click', () => {
             const container = document.getElementById('tallas-container');
             const newRow = document.createElement('div');
-            newRow.className = 'row mb-3 talla-row';
+            newRow.className = 'talla-cantidad';
             newRow.innerHTML = `
+            <hr>
+            <div class="row mb-3 talla-row">
             <label for="tallas[${tallaIndex}][talla]" class="col-md-4 col-form-label text-md-end">Talla</label>
-            <div class="col-md-5">
+            <div class="col-md-6">
                 <input id="tallas[${tallaIndex}][talla]" type="text" class="form-control" name="tallas[${tallaIndex}][talla]" required>
             </div>
-            <label for="tallas[${tallaIndex}][cantidad]" class="col-md-2 col-form-label text-md-end">Cantidad</label>
-            <div class="col-md-3">
+            </div>
+<div class="row mb-3 talla-row">
+            <label for="tallas[${tallaIndex}][cantidad]" class="col-md-4 col-form-label text-md-end">Cantidad</label>
+            <div class="col-md-6">
                 <input id="tallas[${tallaIndex}][cantidad]" type="number" class="form-control" name="tallas[${tallaIndex}][cantidad]" required>
+            </div>
             </div>
         `;
             container.appendChild(newRow);
             tallaIndex++;
+
         });
     </script>
 @endsection

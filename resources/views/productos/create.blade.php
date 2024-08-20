@@ -61,54 +61,61 @@
                     </div>
 
                     <div id="tallas-container">
-                        <div class="row mb-3 talla-row">
-                            <label for="tallas[0][talla]" class="col-md-4 col-form-label text-md-end">
-                                {{ __('Talla') }}</label>
-                            <div class="col-md-5">
-                                <input id="tallas[0][talla]" type="text"
-                                    class="form-control @error('tallas.0.talla') is-invalid @enderror"
-                                    name="tallas[0][talla]" value="{{ old('tallas.0.talla') }}" required
-                                    autocomplete="talla">
+                        <h4>Tallas</h4>
+                        <div class="talla-cantidad">
+                            <hr>
+                            <div class="row mb-3 talla-row">
+                                <label for="tallas[0][talla]" class="col-md-4 col-form-label text-md-end">
+                                    {{ __('Talla') }}</label>
+                                <div class="col-md-6">
+                                    <input id="tallas[0][talla]" type="text"
+                                        class="form-control @error('tallas.0.talla') is-invalid @enderror"
+                                        name="tallas[0][talla]" value="{{ old('tallas.0.talla') }}" required
+                                        autocomplete="talla">
 
-                                @error('tallas.0.talla')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                    @error('tallas.0.talla')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
                             </div>
-                            <label for="tallas[0][cantidad]" class="col-md-2 col-form-label text-md-end">
-                                {{ __('Cantidad') }}</label>
-                            <div class="col-md-3">
-                                <input id="tallas[0][cantidad]" type="number"
-                                    class="form-control @error('tallas.0.cantidad') is-invalid @enderror"
-                                    name="tallas[0][cantidad]" value="{{ old('tallas.0.cantidad') }}" required
-                                    autocomplete="cantidad">
+                            <div class="row mb-3 talla-row">
+                                <label for="tallas[0][cantidad]" class="col-md-4 col-form-label text-md-end">
+                                    {{ __('Cantidad') }}</label>
+                                <div class="col-md-6">
+                                    <input id="tallas[0][cantidad]" type="number"
+                                        class="form-control @error('tallas.0.cantidad') is-invalid @enderror"
+                                        name="tallas[0][cantidad]" value="{{ old('tallas.0.cantidad') }}" required
+                                        autocomplete="cantidad">
 
-                                @error('tallas.0.cantidad')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                    @error('tallas.0.cantidad')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
                             </div>
                         </div>
                     </div>
-
-                    <div class="row mb-3">
-                        <div class="col-md-12">
-                            <button type="button" id="add-talla" class="btn btn-secondary">Agregar Talla</button>
-                        </div>
-                    </div>
-
-                    <div class="row mb-0">
-                        <div class="col-md-6 offset-md-4">
-                            <button type="submit" class="btn btn-primary">
-                                {{ __('Registrar Producto') }}
-                            </button>
-                        </div>
-                    </div>
-                </form>
             </div>
+
+            <div class="row mb-3">
+                <div class="col-md-12">
+                    <button type="button" id="add-talla" class="btn btn-secondary">Agregar Talla</button>
+                </div>
+            </div>
+
+            <div class="row mb-0">
+                <div class="col-md-6 offset-md-4">
+                    <button type="submit" class="btn btn-primary">
+                        {{ __('Registrar Producto') }}
+                    </button>
+                </div>
+            </div>
+            </form>
         </div>
+    </div>
     </div>
 
     <script>
@@ -117,18 +124,24 @@
         document.getElementById('add-talla').addEventListener('click', () => {
             const container = document.getElementById('tallas-container');
             const newRow = document.createElement('div');
-            newRow.className = 'row mb-3 talla-row';
+            newRow.className = 'talla-cantidad';
             newRow.innerHTML = `
+             <hr>
+            <div class="row mb-3 talla-row">
             <label for="tallas[${tallaIndex}][talla]" class="col-md-4 col-form-label text-md-end">Talla</label>
-            <div class="col-md-5">
+            <div class="col-md-6">
                 <input id="tallas[${tallaIndex}][talla]" type="text" class="form-control" name="tallas[${tallaIndex}][talla]" required>
             </div>
-            <label for="tallas[${tallaIndex}][cantidad]" class="col-md-2 col-form-label text-md-end">Cantidad</label>
-            <div class="col-md-3">
+            </div>
+<div class="row mb-3 talla-row">
+            <label for="tallas[${tallaIndex}][cantidad]" class="col-md-4 col-form-label text-md-end">Cantidad</label>
+            <div class="col-md-6">
                 <input id="tallas[${tallaIndex}][cantidad]" type="number" class="form-control" name="tallas[${tallaIndex}][cantidad]" required>
+            </div>
             </div>
         `;
             container.appendChild(newRow);
+
             tallaIndex++;
         });
     </script>
