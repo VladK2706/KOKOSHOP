@@ -18,6 +18,12 @@ main {
     min-height: 92.5vh;
 }
 
+.container-img {
+    height: 88vh;
+    overflow: hidden;
+}
+
+
 .nav-list {
     margin: 0 auto;
 
@@ -35,7 +41,7 @@ main {
     color: #f5ccd4;
 
     width: 125px;
-    line-height: 50px;
+    line-height: 5.3vh;
     display: inline-block;
     justify-content: center;
     align-items: center;
@@ -95,14 +101,14 @@ ul {
 
 .text-img-principal {
     position: absolute;
-    width: 500px;
+    width: 26%;
     top: 40%;
     left: 10%;
     z-index: 1;
     font-family: "lilita one", serif;
     padding: 10px;
     color: #f5ccd4;
-    font-size: 100px;
+    font-size: 5vw;
     font-weight: 400;
     font-style: normal;
 }

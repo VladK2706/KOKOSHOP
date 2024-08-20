@@ -112,11 +112,11 @@
 
                         @endguest
                     </ul>
-                </div>
+                </div> 
             </div>
         </nav>
         @if (!Auth::check() || Auth::user()->id_rol == 1 || Auth::user()->id_rol == 2)
-            <div class="container list-btn">
+            <div class="w-100 list-btn">
                 <nav class="text-center nav-list">
                     <a href="{{ route('home') }}" class="d-inline-block mx-auto text-decoration-none">Principal</a>
                     <a href="{{ route('catalogo.ver') }}"

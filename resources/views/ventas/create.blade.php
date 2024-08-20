@@ -141,6 +141,8 @@
                             </select>
                         </div>
 
+                        
+
                         <div class="row mb-3 producto-row">
                             <label for="productos[0][cantidad_producto]"
                                 class="col-md-4 col-form-label text-md-end">{{ __('Cantidad') }}</label>

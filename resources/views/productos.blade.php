@@ -18,7 +18,7 @@
                                     style="object-fit: cover;">
                             </a>
                         </div>
-                        <div class="text-product row">
+                        <div class="text-product row align-items-start">
                             <a class="nom-producto col-7 text-decoration-none"
                                 href="producto.html">{{ $producto->nombre }}</a>
                             <span class="col-5 text-end ">$ {{ $producto->precio }}</span>

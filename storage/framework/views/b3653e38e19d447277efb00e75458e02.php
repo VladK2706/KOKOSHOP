@@ -114,11 +114,11 @@
 
                         <?php endif; ?>
                     </ul>
-                </div>
+                </div> 
             </div>
         </nav>
         <?php if(!Auth::check() || Auth::user()->id_rol == 1 || Auth::user()->id_rol == 2): ?>
-            <div class="container list-btn">
+            <div class="w-100 list-btn">
                 <nav class="text-center nav-list">
                     <a href="<?php echo e(route('home')); ?>" class="d-inline-block mx-auto text-decoration-none">Principal</a>
                     <a href="<?php echo e(route('catalogo.ver')); ?>"
