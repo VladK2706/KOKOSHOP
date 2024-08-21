@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductosController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VentasController;
+use App\Http\Controllers\CompraController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index']);
@@ -19,10 +20,13 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('usuarios', UserController::class);
     Route::resource('productos', ProductosController::class);
     Route::resource('ventas', VentasController::class);
+    Route::post('/compra', [CompraController::class, 'procesarCompra'])->name('compra.procesar');
+
 
 });
 Route::get('/catalogo', [CatalogoController::class, 'ver_productos'])->name('catalogo.ver');
 Route::get('/interfazProducto/{id}', [CatalogoController::class, 'ver_detalles_producto'])->name('producto.ver');
+Route::get('/compra/{producto}', [CompraController::class, 'mostrarFormulario'])->name('compra.formulario');
 
 Route::get('/nosotros', [ClienteController::class, 'nosotros'])->name('nosotros.ver');
 Route::get('/asesoria', [ClienteController::class, 'asesoria'])->name('asesoria.ver');
