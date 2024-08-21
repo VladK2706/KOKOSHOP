@@ -18,8 +18,8 @@ return new class extends Migration
 
             $table->float('precio_Total');
             $table->date('fecha_venta');
-            $table->string('tipo_venta', 40);
-            $table->string('estado', 10);
+            $table->string('tipo_venta', 8);
+            $table->string('estado', 12);
 
             // Definición de las claves foráneas
             $table->foreign('Id_cli')->references('id')->on('users')->onDelete('cascade');

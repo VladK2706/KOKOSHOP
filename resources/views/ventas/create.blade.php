@@ -64,9 +64,12 @@
                         <label for="tipo_venta"
                             class="col-md-4 col-form-label text-md-end">{{ __('Tipo de Venta') }}</label>
                         <div class="col-md-6">
-                            <input id="tipo_venta" type="text"
-                                class="form-control @error('tipo_venta') is-invalid @enderror" name="tipo_venta"
-                                value="{{ old('tipo_venta') }}" required>
+                            <select id="tipo_venta" class="form-control @error('tipo_venta') is-invalid @enderror"
+                                name="tipo_venta" required>
+                                <option value="" disabled selected>Seleccionar Tipo de Ventas</option>
+                                <option value="Virtual">Virtual</option>
+                                <option value="Fisica">Fisica</option>
+                            </select>
                             @error('tipo_venta')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -78,8 +81,13 @@
                     <div class="row mb-3">
                         <label for="estado" class="col-md-4 col-form-label text-md-end">{{ __('Estado') }}</label>
                         <div class="col-md-6">
-                            <input id="estado" type="text" class="form-control @error('estado') is-invalid @enderror"
-                                name="estado" value="{{ old('estado') }}" required>
+                            <select id="estado" class="form-control @error('estado') is-invalid @enderror" name="estado"
+                                required>
+                                <option value="" disabled selected>Seleccionar Estado de Venta</option>
+                                <option value="Pagada">Pagada</option>
+                                <option value="Enviada">Enviada</option>
+                                <option value="Entregada">Entregada</option>
+                            </select>
                             @error('estado')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -133,15 +141,14 @@
                             <select name="productos[0][talla_producto]" id="productos[0][talla_producto]"
                                 class="form-control @error('productos.0.Id_producto') is-invalid @enderror">
                                 @foreach ($productos as $producto)
-                                @if ($producto->tipo_producto == 'Superior' || $producto->tipo_producto == 'Cuerpo_completo')
-                                    
-                                @endif
+                                    @if ($producto->tipo_producto == 'Superior' || $producto->tipo_producto == 'Cuerpo_completo')
+                                    @endif
                                     <option value="{{ $producto->cantidadTalla }}">{{ $producto->nombre }}</option>
                                 @endforeach
                             </select>
                         </div>
 
-                        
+
 
                         <div class="row mb-3 producto-row">
                             <label for="productos[0][cantidad_producto]"

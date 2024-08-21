@@ -9,6 +9,7 @@ export default defineConfig({
                 'resources/js/app.js',
                 'resources/js/producto.js',
                 'resources/js/ventas.js',
+                'resources/js/validaciones/registrar_usuario.js'
 
             ],
             refresh: true,

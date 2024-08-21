@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CantidadTalla;
 use App\Models\Producto;
 use App\Models\ProductosVenta;
 use App\Models\User;
@@ -35,8 +36,9 @@ class VentasController extends Controller
         $clientes = User::where('Id_rol', 2)->get();
         $empleados = User::where('Id_rol', 1)->orwhere('Id_rol', 3)->get();
         $productos = Producto::where('cantidad_total', '>', 0)->get();
+        $cantidadTallas = CantidadTalla::all();
 
-        return view('ventas.create', compact('clientes', 'empleados', 'productos'));
+        return view('ventas.create', compact('clientes', 'empleados', 'productos', 'cantidadTallas'));
     }
 
     /**
@@ -47,7 +49,6 @@ class VentasController extends Controller
     public function store(Request $request)
     {
 
-        $users = User::all();
         // Validar los datos recibidos
         $validated = $request->validate([
             'Id_cli' => ['required', 'exists:users,id'],

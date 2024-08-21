@@ -234,4 +234,5 @@
             </div>
         </div>
     </div>
+    <script src="{{ asset('js/validaciones/registrar_usuario.js') }}"></script>
 @endsection
