@@ -9,6 +9,8 @@ class ProductosVenta extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
+
     // Nombre de la tabla en la base de datos
     protected $table = 'productos_venta';
 

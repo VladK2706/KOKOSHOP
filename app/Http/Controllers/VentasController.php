@@ -31,14 +31,17 @@ class VentasController extends Controller
      */
     public function create()
     {
-        // Aquí puedes pasar datos adicionales a la vista si es necesario
-
         $clientes = User::where('Id_rol', 2)->get();
-        $empleados = User::where('Id_rol', 1)->orwhere('Id_rol', 3)->get();
+        $empleados = User::where('Id_rol', 1)->orWhere('Id_rol', 3)->get();
         $productos = Producto::where('cantidad_total', '>', 0)->get();
-        $cantidadTallas = CantidadTalla::all();
 
-        return view('ventas.create', compact('clientes', 'empleados', 'productos', 'cantidadTallas'));
+        // Obtener las tallas de cada producto
+        $tallasPorProducto = [];
+        foreach ($productos as $producto) {
+            $tallasPorProducto[$producto->Id_producto] = $producto->tallas->pluck('talla')->toArray();
+        }
+
+        return view('ventas.create', compact('clientes', 'empleados', 'productos', 'tallasPorProducto'));
     }
 
     /**
@@ -65,35 +68,52 @@ class VentasController extends Controller
 
         DB::beginTransaction();
 
-        try {
-            // Crear la venta
-            $venta = Venta::create([
-                'Id_cli' => $validated['Id_cli'],
-                'Id_Emp' => $validated['Id_Emp'],
-                'precio_Total' => $validated['precio_Total'],
-                'fecha_venta' => $validated['fecha_venta'],
-                'tipo_venta' => $validated['tipo_venta'],
-                'estado' => $validated['estado'],
-            ]);
+        $precionTotal = 0;
+        foreach ($request->productos as $producto) {
+            $productoInfo = Producto::find($producto['Id_producto']);
+            $precionTotal += $productoInfo->precio * $producto['cantidad_producto'];
+        }
 
-            // Insertar los productos de la venta
-            foreach ($validated['productos'] as $productoData) {
-                ProductosVenta::create([
-                    'Id_venta' => $venta->Id_venta,
-                    'Id_producto' => $productoData['Id_producto'],
-                    'cantidad_producto' => $productoData['cantidad_producto'],
-                    'talla_producto' => $productoData['talla_producto'],
+        // Crear la venta
+        $venta = Venta::create([
+            'Id_cli' => $validated['Id_cli'],
+            'Id_Emp' => $validated['Id_Emp'],
+            'precio_Total' => $precionTotal,
+            'fecha_venta' => $validated['fecha_venta'],
+            'tipo_venta' => $validated['tipo_venta'],
+            'estado' => $validated['estado'],
+        ]);
+
+        // Insertar los productos de la venta
+
+        foreach ($validated['productos'] as $productoData) {
+            ProductosVenta::create([
+                'Id_venta' => $venta->Id_venta,
+                'Id_producto' => $productoData['Id_producto'],
+                'cantidad_producto' => $productoData['cantidad_producto'],
+                'talla_producto' => $productoData['talla_producto'],
+            ]);
+            $cantidadTalla = CantidadTalla::where('Id_producto', $productoData['Id_producto'])
+                ->where('talla', $productoData['talla_producto'])
+                ->first(); // Usar first() en lugar de get()
+
+            // Verificar si se encontró el registro antes de proceder
+            if ($cantidadTalla) {
+                // Calcular la nueva cantidad
+                $cantidadTallaTotal = $cantidadTalla->cantidad - $productoData['cantidad_producto'];
+
+                // Actualizar la cantidad en la base de datos
+                $cantidadTalla->update([
+                    'cantidad' => $cantidadTallaTotal,
                 ]);
             }
 
-            DB::commit();
-
-            return redirect()->route('ventas.index')->with('success', 'Venta creada exitosamente.');
-        } catch (\Exception $e) {
-            DB::rollBack();
-
-            return back()->withErrors('Ocurrió un error al crear la venta.');
         }
+
+        DB::commit();
+
+        return redirect()->route('ventas.index')->with('success', 'Venta creada exitosamente.');
+
     }
 
     /**

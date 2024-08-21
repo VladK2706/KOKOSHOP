@@ -27,5 +27,7 @@ class AdminUserSeeder extends Seeder
                 'password' => Hash::make('1234567890'), // Cambia la contraseña por una segura
             ]
         );
+
+        
     }
 }
