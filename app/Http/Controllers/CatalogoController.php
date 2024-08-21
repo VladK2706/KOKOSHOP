@@ -12,4 +12,12 @@ class CatalogoController extends Controller
 
         return view('productos', compact('productos'));
     }
+
+    public function ver_detalles_producto($id)
+    {
+        $producto = Producto::with('tallas')->find($id);
+        
+        return view('interfazProducto', ['producto' => $producto]);
+    }
+    
 }

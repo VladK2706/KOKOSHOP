@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CatalogoController;
+use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductosController;
 use App\Http\Controllers\UserController;
@@ -21,3 +22,7 @@ Route::middleware(['auth'])->group(function () {
 
 });
 Route::get('/catalogo', [CatalogoController::class, 'ver_productos'])->name('catalogo.ver');
+Route::get('/interfazProducto/{id}', [CatalogoController::class, 'ver_detalles_producto'])->name('producto.ver');
+
+Route::get('/nosotros', [ClienteController::class, 'nosotros'])->name('nosotros.ver');
+Route::get('/asesoria', [ClienteController::class, 'asesoria'])->name('asesoria.ver');

@@ -16,4 +16,12 @@ class ClienteController extends Controller
         return view('cliente.index', compact('clientes', 'productos'));
     }
 
+    public function nosotros(){
+        return view('nosotros');
+    }
+
+    public function asesoria(){
+        return view('asesoria');
+    }
+
 }
