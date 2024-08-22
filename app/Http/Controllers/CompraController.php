@@ -18,7 +18,7 @@ class CompraController extends Controller
 
 
     public function procesarCompra(Request $request){
-
+        
     }
 
 }

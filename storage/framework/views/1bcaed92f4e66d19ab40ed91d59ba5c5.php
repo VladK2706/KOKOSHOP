@@ -24,7 +24,7 @@
                     <?php $__currentLoopData = $productos->take(4); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $producto): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <div class="col-12 col-sm-6 col-md-4 col-lg-3 producto">
                             <div class="uni-producto" style="height: 300px;">
-                                <a href="producto.html">
+                                <a href="<?php echo e(route('producto.ver', $producto->Id_producto)); ?>">
                                     <img src="<?php echo e(asset('images/productos/' . $producto->nombre_imagen . '.jpg')); ?>"
                                         alt="<?php echo e($producto->nombre_imagen); ?>" class="img-fluid h-100 w-100"
                                         style="object-fit: cover;">

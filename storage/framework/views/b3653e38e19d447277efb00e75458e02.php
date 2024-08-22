@@ -119,12 +119,12 @@
         </nav>
         <?php if(!Auth::check() || Auth::user()->id_rol == 1 || Auth::user()->id_rol == 2): ?>
             <div class="w-100 list-btn">
-                <nav class="text-center nav-list">
+            <nav class="text-center nav-list">
                     <a href="<?php echo e(route('home')); ?>" class="d-inline-block mx-auto text-decoration-none">Principal</a>
                     <a href="<?php echo e(route('catalogo.ver')); ?>"
                         class="d-inline-block align-item-start mx-auto text-decoration-none">Productos</a>
-                    <a href="" class="d-inline-block mx-auto text-decoration-none">Principal</a>
-                    <a href="" class="d-inline-block mx-auto text-decoration-none">Principal</a>
+                    <a href="<?php echo e(route('nosotros.ver')); ?>" class="d-inline-block mx-auto text-decoration-none">Nosotros</a>
+                    <a href="<?php echo e(route('asesoria.ver')); ?>" class="d-inline-block mx-auto text-decoration-none">Asesoria</a>
                 </nav>
             </div>
         <?php endif; ?>
