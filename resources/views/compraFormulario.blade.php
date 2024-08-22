@@ -95,55 +95,61 @@
             }
         }
     </style>
-    <div class="container w-50">
-        <h1>Formulario de Compra</h1>
-        <form action="{{ route('compra.procesar') }}" method="POST">
+    <div class="container w-50 p-4">
+        <form action="{{ route('ventas.store') }}" method="POST">
             @csrf
 
 
-            <div class="flex flex-col md:flex-row bg-background p-6">
+            <div class="flex flex-col md:flex-row p-6">
                 <div class="w-full md:w-2/3 pr-4">
                     <h2 class="text-lg font-semibold">Cuenta</h2>
                     <p class="text-muted-foreground">{{ auth()->user()->email }}</p>
                     <h3 class="mt-4 text-md font-semibold">Entrega</h3>
-                    <form class="space-y-4">
-                        <div class="">
-                            <label class="block text-sm font-medium" for="name">Nombre</label>
-                            <input type="text" id="name"
-                                class="mt-1 block w-full border border-border rounded-md p-2"
-                                placeholder="Nombre completo" />
-                        </div>
-                        <div>
-                            <label class="block text-sm font-medium" for="name">Nombre</label>
-                            <input type="text" id="name"
-                                class="mt-1 block w-full border border-border rounded-md p-2"
-                                placeholder="Nombre completo" />
+                    <div class="space-y-4">
+                        @csrf
+                        <input type="hidden" value="{{ auth()->user()->id }}" name="id_cli">
+                        <input type="hidden" value="1" name="id_emp">
+                        <input type="hidden" value="{{ now()->format('d-m-Y') }}" name="fecha_venta">
+                        <input type="hidden" value="Virtual" name="tipo_venta">
+                        <input type="hidden" value="Pendiente" name="estado">
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label class="block text-sm font-medium" for="name">Nombre</label>
+                                <input type="text" id="name"
+                                    class="mt-1 flex w-full border border-border rounded-md p-2"
+                                    value="{{ auth()->user()->name }}" disabled />
+                            </div>
+                            <div class="col-md-6">
+                                <label class="block text-sm font-medium" for="name">Apellido</label>
+                                <input type="text" id="name"
+                                    class="mt-1  w-full border border-border rounded-md p-2"
+                                    value="{{ auth()->user()->lastname }}" disabled />
+                            </div>
                         </div>
                         <div>
                             <label class="block text-sm font-medium" for="address">Dirección</label>
                             <input type="text" id="address"
-                                class="mt-1 block w-full border border-border rounded-md p-2" placeholder="Calle, número" />
+                                class="mt-1 block w-full border border-border rounded-md p-2"
+                                value="{{ auth()->user()->direccion }}" disabled />
                         </div>
                         <div>
                             <label class="block text-sm font-medium" for="city">Ciudad</label>
                             <input type="text" id="city"
-                                class="mt-1 block w-full border border-border rounded-md p-2" placeholder="Ciudad" />
-                        </div>
-                        <div>
-                            <label class="block text-sm font-medium" for="postal-code">Código Postal</label>
-                            <input type="text" id="postal-code"
-                                class="mt-1 block w-full border border-border rounded-md p-2" placeholder="Código Postal" />
+                                class="mt-1 block w-full border border-border rounded-md p-2"
+                                value="{{ auth()->user()->ciudad }}" disabled />
                         </div>
                         <div>
                             <label class="block text-sm font-medium" for="phone">Teléfono</label>
                             <input type="tel" id="phone"
-                                class="mt-1 block w-full border border-border rounded-md p-2" placeholder="Teléfono" />
+                                class="mt-1 block w-full border border-border rounded-md p-2"
+                                value="{{ auth()->user()->telefono }}" disabled />
                         </div>
-                    </form>
+                    </div>
 
                     <h3 class="mt-4 text-md font-semibold">Método de envío</h3>
                     <p class="text-muted-foreground">Envío estándar</p>
-                    <p class="text-muted-foreground">Costo: $1,400.00</p>
+                    <p class="text-muted-foreground">Costo: $17,000.00</p>
 
                     <h3 class="mt-4 text-md font-semibold">Pago</h3>
                     <div>
@@ -164,19 +170,29 @@
                 </div>
 
                 <div class="w-full md:w-1/3 bg-card rounded-lg md:mt-0">
-                    <h3 class="text-lg font-semibold">Resumen de pedido</h3>
-                    <div class="mt-4">
-                        <div class="flex justify-between">
-                            <span>Subtotal</span>
-                            <span>$399,900.00</span>
+
+                    <div class="bg-card p-4 rounded-lg shadow-md">
+                        <div class="flex items-center mb-4">
+                            <img src="https://openui.fly.dev/openui/100x100.svg?text=🥿" alt="OSIRIS D3 2001"
+                                class="mr-4 rounded" />
+                            <div>
+                                <h2 class="text-lg font-semibold">{{ $producto->nombre }}</h2>
+                                <p class="text-muted-foreground">Talla: </p>
+                                <p class="text-primary">$ 529.900,00</p>
+                            </div>
+                            <span class="ml-auto text-muted">1</span>
                         </div>
-                        <div class="flex justify-between">
-                            <span>Descuentos</span>
-                            <span>$0.00</span>
+                        <div class="flex justify-between mb-2">
+                            <span class="text-muted-foreground">Subtotal</span>
+                            <span class="text-primary">$ 529.900,00</span>
                         </div>
-                        <div class="flex justify-between font-semibold">
+                        <div class="flex justify-between mb-2">
+                            <span class="text-muted-foreground">Métodos de envío</span>
+                            <span class="text-primary">$ 16.900,00</span>
+                        </div>
+                        <div class="flex justify-between font-bold">
                             <span>Total</span>
-                            <span>$414,800.00</span>
+                            <span class="text-primary">COP $ 546.800,00</span>
                         </div>
                     </div>
                 </div>

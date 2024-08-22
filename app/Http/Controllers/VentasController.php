@@ -69,6 +69,10 @@ class VentasController extends Controller
         DB::beginTransaction();
 
         $precionTotal = 0;
+
+        if ($validated['tipo_venta'] == 'Virtual') {
+            $precionTotal = 17000;
+        }
         foreach ($request->productos as $producto) {
             $productoInfo = Producto::find($producto['Id_producto']);
             $precionTotal += $productoInfo->precio * $producto['cantidad_producto'];

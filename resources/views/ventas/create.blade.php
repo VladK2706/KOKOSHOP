@@ -82,6 +82,7 @@
                             <select id="estado" class="form-control @error('estado') is-invalid @enderror" name="estado"
                                 required>
                                 <option value="" disabled selected>Seleccionar Estado de Venta</option>
+                                <option value="Pendiente">Pendiente</option>
                                 <option value="Pagada">Pagada</option>
                                 <option value="Enviada">Enviada</option>
                                 <option value="Entregada">Entregada</option>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\VentasController;
 use App\Models\Producto;
 use Illuminate\Http\Request;
 
@@ -15,10 +16,4 @@ class CompraController extends Controller
 
         return view('compraFormulario', ['producto' => $producto, 'tallas' => $tallas]);
     }
-
-
-    public function procesarCompra(Request $request){
-        
-    }
-
 }
