@@ -20,8 +20,12 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('usuarios', UserController::class);
     Route::resource('productos', ProductosController::class);
     Route::resource('ventas', VentasController::class);
-    Route::post('/compra', [VentasController::class, 'store'])->name('compra.procesar');
-    Route::get('/compra/{producto}', [CompraController::class, 'mostrarFormulario'])->name('compra.formulario');
+
+    //Route::post('/compra/{producto}', [CompraController::class, 'mostrarFormulario'])->name('compra.formulario');
+    Route::get('/compraFormulario', [CompraController::class, 'mostrarFormulario'])->name('compraFormulario');
+    Route::post('/compraRealizada', [CompraController::class, 'realizarCompra'])->name('reciboCompra');
+
+    // Otras rutas...
 
 });
 Route::get('/catalogo', [CatalogoController::class, 'ver_productos'])->name('catalogo.ver');

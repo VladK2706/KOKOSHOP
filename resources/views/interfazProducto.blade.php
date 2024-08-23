@@ -110,32 +110,39 @@
 
 
                 <p class="mt-4 text-xl font-semibold text-primary">$ {{ $producto->precio }} COP</p>
+                <form method="get" action="{{ route('compraFormulario') }}">
+                    @csrf
 
-                <label for="size" class="mt-4 block text-muted">Tamaño</label>
-                <select id="size" class="mt-1 block w-full border border-border rounded-md p-2">
+                    <input type="hidden" value="{{ $producto->Id_producto }}" name="Id_producto">
+                    <label for="size" class="mt-4 block text-muted">Tamaño</label>
+                    <select id="size" name="tallaId" class="mt-1 block w-full border border-border rounded-md p-2">
 
-                    @foreach ($producto->tallas as $talla)
-                        <option value="{{ $talla->talla }}">{{ $talla->talla }}</option>
-                    @endforeach
-                </select>
+                        @foreach ($producto->tallas as $talla)
+                            <option value="{{ $talla->id, $talla->talla }}">{{ $talla->talla }}</option>
+                        @endforeach
+                    </select>
 
-                <label for="quantity" class="mt-4 block text-muted">Cantidad</label>
-                <div class="flex items-center mt-1">
-                    <button id="decrement" class="bg-secondary text-secondary-foreground rounded-l-md px-4">-</button>
-                    <input type="number" id="quantity" name="talla" value="1"
-                        class="border border-border text-center w-16" />
-                    <button id="increment" class="bg-secondary text-secondary-foreground rounded-r-md px-4">+</button>
-                </div>
+                    <label for="quantity" class="mt-4 block text-muted">Cantidad</label>
+                    <div class="flex items-center mt-1">
+                        <button type="button" id="decrement"
+                            class="bg-secondary text-secondary-foreground rounded-l-md px-4">-</button>
+                        <input type="number" id="quantity" name="talla_cantidad" value="1" min="0"
+                            max="{{ $producto->cantidad_total }}" class="border border-border text-center w-16" />
+                        <button type="button" id="increment"
+                            class="bg-secondary text-secondary-foreground rounded-r-md px-4">+</button>
+                    </div>
 
 
-                <div class="mt-6 flex space-x-4">
-                    <a href="{{ route('compra.formulario', $producto->Id_producto) }}"
-                        class="bg-primary text-primary-foreground hover:bg-primary/80 rounded-md py-2 w-full text-center">
-                        Comprar
-                        ahora
-                    </a>
-                </div>
+                    <div class="mt-6 flex space-x-4">
+
+                        <button type="submit"
+                            class="bg-primary text-primary-foreground hover:bg-primary/80 rounded-md py-2 w-full text-center">
+                            Comprar ahora
+                        </button>
+                </form>
+
             </div>
+        </div>
         </div>
 
         <script>
@@ -143,6 +150,8 @@
             const quantityInput = document.getElementById('quantity');
             const decrementButton = document.getElementById('decrement');
             const incrementButton = document.getElementById('increment');
+            const size = document.getElementById('size');
+
 
             // Añade los manejadores de eventos
             decrementButton.addEventListener('click', () => {
@@ -158,7 +167,8 @@
                 // Obtiene el valor actual del input
                 let currentValue = parseInt(quantityInput.value);
                 // Incrementa el valor
-                quantityInput.value = currentValue + 1;
+                if (currentValue < {{ $producto->cantidad_total }})
+                    quantityInput.value = currentValue + 1;
             });
         </script>
     @endsection
