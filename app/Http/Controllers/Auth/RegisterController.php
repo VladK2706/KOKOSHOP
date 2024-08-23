@@ -28,7 +28,12 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected function redirectTo()
+    {
+        $this->guard()->logout();
+
+        return '/login';
+    }
 
     /**
      * Create a new controller instance.
