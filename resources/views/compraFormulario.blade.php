@@ -153,18 +153,10 @@
 
                     <h3 class="mt-4 text-md font-semibold">Pago</h3>
                     <div>
-                        <label class="block text-sm font-medium">Método de pago</label>
-                        <select class="mt-1 block w-full border border-border rounded-md p-2">
-                            <option>Mercado Pago</option>
-                            <option>Sinpe</option>
-                        </select>
+                        <label class="block text-sm font-medium">Realiza tu compra consignando directamente a nuestra cuenta
+                            Bancolombia o Nequi.</label>
                     </div>
 
-                    <h3 class="mt-4 text-md font-semibold">Dirección de facturación</h3>
-                    <div>
-                        <input type="checkbox" id="billing-address" />
-                        <label class="ml-2" for="billing-address">Usar una dirección de facturación distinta</label>
-                    </div>
 
                     <button class="mt-6 bg-primary text-primary-foreground p-2 rounded-md">Finalizar el pedido</button>
                 </div>
