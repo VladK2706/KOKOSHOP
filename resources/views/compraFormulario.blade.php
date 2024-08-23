@@ -161,7 +161,7 @@
                     <button class="mt-6 bg-primary text-primary-foreground p-2 rounded-md">Finalizar el pedido</button>
                 </div>
 
-                <div class="w-full md:w-1/3 bg-card rounded-lg md:mt-0">
+                <div class="w-full md:w-1/3  rounded-lg md:mt-0">
 
                     <div class="bg-card p-4 rounded-lg shadow-md">
                         <div class="flex items-center mb-4">

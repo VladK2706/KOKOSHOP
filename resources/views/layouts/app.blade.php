@@ -40,7 +40,7 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <div class=" navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
 
@@ -112,17 +112,19 @@
 
                         @endguest
                     </ul>
-                </div> 
+                </div>
             </div>
         </nav>
         @if (!Auth::check() || Auth::user()->id_rol == 1 || Auth::user()->id_rol == 2)
             <div class="w-100 list-btn">
-            <nav class="text-center nav-list">
+                <nav class="text-center nav-list">
                     <a href="{{ route('home') }}" class="d-inline-block mx-auto text-decoration-none">Principal</a>
                     <a href="{{ route('catalogo.ver') }}"
                         class="d-inline-block align-item-start mx-auto text-decoration-none">Productos</a>
-                    <a href="{{route('nosotros.ver')}}" class="d-inline-block mx-auto text-decoration-none">Nosotros</a>
-                    <a href="{{route('asesoria.ver')}}" class="d-inline-block mx-auto text-decoration-none">Asesoria</a>
+                    <a href="{{ route('nosotros.ver') }}"
+                        class="d-inline-block mx-auto text-decoration-none">Nosotros</a>
+                    <a href="{{ route('asesoria.ver') }}"
+                        class="d-inline-block mx-auto text-decoration-none">Asesoria</a>
                 </nav>
             </div>
         @endif
