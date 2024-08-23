@@ -71,7 +71,7 @@
                                             name="tipo_doc" value="{{ old('tipo_doc') }}" required autocomplete="tipo_doc">
                                             <option value="" selected>Selecionar</option>
                                             <option value="CC">Cédula de ciudadania</option>
-                                            <option value="TI">Tarjeta de Identidad</option>
+                                        
                                             <option value="CE">Cédula de Extranjeria</option>
                                             <option value="PEP">Permiso Especial de Permanencia</option>
                                             <option value="DIE">Documento de identificación extranjero</option>

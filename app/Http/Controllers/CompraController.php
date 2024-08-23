@@ -34,6 +34,8 @@ class CompraController extends Controller
         // return view('compraFormulario', compact('producto', 'talla', 'cantidad'));
 
         // Redirigir con datos si lo deseas
+
+
         return view('compraFormulario', compact('producto', 'tallaId', 'tallaName', 'cantidad'));
     }
 
@@ -101,8 +103,22 @@ class CompraController extends Controller
         }
 
         DB::commit();
-
-        return view('compraRealizada', compact('venta'));
+        
+    
+        //dd($request->all());
+        $productosDetallados = [];
+        foreach ($validated['productos'] as $productoData) {
+            $producto = Producto::find($productoData['Id_producto']);
+            $productosDetallados[] = [
+                'nombre' => $producto->nombre,
+                'precio' => $producto->precio,
+                'cantidad' => $productoData['cantidad_producto'],
+                'talla' => $productoData['talla_producto'],
+                'subtotal' => $producto->precio * $productoData['cantidad_producto']
+            ];
+        }
+        
+        return view('compraRealizada', compact('venta', 'productosDetallados'));
 
     }
 }
