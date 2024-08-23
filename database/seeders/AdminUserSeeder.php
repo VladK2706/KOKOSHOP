@@ -3,7 +3,8 @@
 namespace Database\Seeders;
 
 use App\Models\User;
-use Illuminate\Database\Seeder; // O el modelo que estés usando para usuarios
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB; // O el modelo que estés usando para usuarios
 use Illuminate\Support\Facades\Hash;
 
 class AdminUserSeeder extends Seeder
@@ -13,6 +14,13 @@ class AdminUserSeeder extends Seeder
      */
     public function run(): void
     {
+        DB::table('roles')->insert([
+            ['id' => 1, 'rol' => 'administrador'],
+            ['id' => 2, 'rol' => 'cliente'],
+            ['id' => 3, 'rol' => 'vendedor'],
+            ['id' => 4, 'rol' => 'almacenista'],
+        ]);
+
         User::updateOrCreate(
             ['email' => 'admin@gmail.com'], // Cambia el email por el que desees
             [
@@ -28,6 +36,5 @@ class AdminUserSeeder extends Seeder
             ]
         );
 
-        
     }
 }

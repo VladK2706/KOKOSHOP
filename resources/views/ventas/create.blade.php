@@ -16,7 +16,8 @@
                                 required>
                                 <option value="">Selecciona un cliente</option>
                                 @foreach ($clientes as $cliente)
-                                    <option value="{{ $cliente->id }}">{{ $cliente->name }}</option>
+                                    <option value="{{ $cliente->id }}">{{ $cliente->name }} {{ $cliente->lastname }}
+                                    </option>
                                 @endforeach
                             </select>
                             @error('Id_cli')
@@ -34,7 +35,8 @@
                                 required>
                                 <option value="">Selecciona un empleado</option>
                                 @foreach ($empleados as $empleado)
-                                    <option value="{{ $empleado->id }}">{{ $empleado->name }}</option>
+                                    <option value="{{ $empleado->id }}">{{ $empleado->name }} {{ $empleado->lastname }}
+                                    </option>
                                 @endforeach
                             </select>
                             @error('Id_Emp')

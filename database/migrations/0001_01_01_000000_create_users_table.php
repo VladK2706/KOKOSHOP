@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('lastname', 10);
             $table->unsignedBigInteger('id_rol');
             $table->string('tipo_doc', 10);
-            $table->integer('num_doc')->unique();
+            $table->bigInteger('num_doc')->unique();
             $table->string('ciudad', 20);
             $table->string('direccion', 30);
             $table->string('telefono', 10);
