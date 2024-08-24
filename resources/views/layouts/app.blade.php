@@ -147,9 +147,9 @@
             <a href="https://wa.me/c/573219313578"><img src="https://static.vecteezy.com/system/resources/previews/021/495/946/original/whatsapp-logo-icon-free-png.png" width="40" height="40"></a>
             <a href="https://instagram.com/kokoshop_10?igshid=MzRlODBiNWFlZA=="><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Instagram_logo_2022.svg/800px-Instagram_logo_2022.svg.png"
                     width="40" height="40"></a>
-            <a href="https://www.facebook.com/"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/2021_Facebook_icon.svg/220px-2021_Facebook_icon.svg.png" width="40"
+            <a href=" https://www.facebook.com/people/KokoShop-Colombia/61564941809696/"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/2021_Facebook_icon.svg/220px-2021_Facebook_icon.svg.png" width="40"
                     height="40"></a>
-            <a href="https://twitter.com/home?lang=es"><img src="https://logos-world.net/wp-content/uploads/2023/08/X-Logo.png" width="40"
+            <a href="https://x.com/KokoShopCOL"><img src="https://www.utadeo.edu.co/sites/tadeo/files/node/wysiwyg/twitter-x-logo-0339f999cf-seeklogo.com_.png" width="40"
                     height="40"></a>
             <br>
             <br>
