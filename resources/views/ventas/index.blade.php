@@ -5,7 +5,7 @@
             <h2>Ventas</h2>
             <div class="title-crud">
                 @if (Auth::user()->id_rol == 3)
-                    <a href="{{ route('ventaFormulario') }}" class="btn btn-primary">Realizar asdasdVenta</a>
+                    <a href="{{ route('ventaFormulario') }}" class="btn btn-primary">Realizar Venta</a>
                 @else
                     <a href="{{ route('ventas.create') }}" class="btn btn-primary">Realizar Venta</a>
                 @endif
