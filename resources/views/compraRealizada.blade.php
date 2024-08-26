@@ -73,6 +73,11 @@
                     <li>{{$producto['nombre']}}, Talla {{$producto['talla']}}, Cantidad: {{$producto['cantidad']}}</li>
                 </ul>
                 @endforeach
+                     <p><strong>Unico metodo de pago: </p></trong>
+                    <div>
+                    <p>Nequi.<br> 
+                            (Tu pedido no se procesará hasta que se haya recibido el importe en nuestra cuenta)
+    </p>
             </div>
 
             <div class="total">
