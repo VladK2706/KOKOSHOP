@@ -151,10 +151,11 @@
                     <p class="text-muted-foreground">Envío estándar</p>
                     <p class="text-muted-foreground">Costo: $17,000.00</p>
 
-                    <h3 class="mt-4 text-md font-semibold">Pago</h3>
+                    <h3 class="mt-4 text-md font-semibold">Unico metodo de pago</h3>
                     <div>
-                        <label class="block text-sm font-medium">Realiza tu compra consignando directamente a nuestra cuenta
-                            Bancolombia o Nequi.</label>
+                        <label class="block text-sm font-medium">Nequi.<br> 
+                            (Tu pedido no se procesará hasta que se haya recibido el importe en nuestra cuenta)
+                        </label>
                     </div>
 
 
