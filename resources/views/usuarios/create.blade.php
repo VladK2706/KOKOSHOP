@@ -109,7 +109,7 @@
                             <select id="ciudad" class="form-control @error('ciudad') is-invalid @enderror" name="ciudad"
                                 value="{{ old('ciudad') }}" required autocomplete="ciudad">
                                 <option value="" selected>Selecionar</option>
-                                <option value="Bogotá D.C.">Bogotá D.C.</option>
+                                <option value="Bogotá DC">Bogotá DC</option>
                                 <option value="Medellín">Medellín</option>
                                 <option value="Cali">Cali</option>
                                 <option value="Barranquilla">Barranquilla</option>

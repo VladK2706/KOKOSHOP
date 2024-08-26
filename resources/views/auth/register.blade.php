@@ -71,7 +71,7 @@
                                             name="tipo_doc" value="{{ old('tipo_doc') }}" required autocomplete="tipo_doc">
                                             <option value="" selected>Selecionar</option>
                                             <option value="CC">Cédula de ciudadania</option>
-                                        
+
                                             <option value="CE">Cédula de Extranjeria</option>
                                             <option value="PEP">Permiso Especial de Permanencia</option>
                                             <option value="DIE">Documento de identificación extranjero</option>
@@ -111,7 +111,7 @@
                                         <select id="ciudad" class="form-control @error('ciudad') is-invalid @enderror"
                                             name="ciudad" value="{{ old('ciudad') }}" required autocomplete="ciudad">
                                             <option value="" selected>Selecionar</option>
-                                            <option value="Bogotá D.C.">Bogotá D.C.</option>
+                                            <option value="Bogotá D.C.">Bogotá DC</option>
                                             <option value="Medellín">Medellín</option>
                                             <option value="Cali">Cali</option>
                                             <option value="Barranquilla">Barranquilla</option>

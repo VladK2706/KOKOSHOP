@@ -3,7 +3,8 @@
 @section('content')
     <div class="section-form py-4 flex-fill">
         <div class="container">
-            <h2>Registrar Venta</h2>
+            <h2>Realizar Venta</h2>
+
             <a href="{{ route('ventas.index') }}" class="btn btn-danger">Cancelar</a>
             <div class="card_body">
                 <form action="{{ route('ventas.store') }}" method="POST">

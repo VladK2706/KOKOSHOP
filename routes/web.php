@@ -6,6 +6,7 @@ use App\Http\Controllers\CompraController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductosController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\VendedorController;
 use App\Http\Controllers\VentasController;
 use Illuminate\Support\Facades\Route;
 
@@ -24,7 +25,7 @@ Route::middleware(['auth'])->group(function () {
     //Route::post('/compra/{producto}', [CompraController::class, 'mostrarFormulario'])->name('compra.formulario');
     Route::get('/compraFormulario', [CompraController::class, 'mostrarFormulario'])->name('compraFormulario');
     Route::post('/compraRealizada', [CompraController::class, 'realizarCompra'])->name('reciboCompra');
-
+    Route::get('/vendedor', [VendedorController::class, 'VentaFormulario'])->name('ventaFormulario');
     // Otras rutas...
 
 });

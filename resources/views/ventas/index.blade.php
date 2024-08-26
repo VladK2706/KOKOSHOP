@@ -4,7 +4,12 @@
         <div class="container">
             <h2>Ventas</h2>
             <div class="title-crud">
-                <a href="{{ route('ventas.create') }}" class="btn btn-primary">Realizar Venta</a>
+                @if (Auth::user()->id_rol == 3)
+                    <a href="{{ route('ventaFormulario') }}" class="btn btn-primary">Realizar asdasdVenta</a>
+                @else
+                    <a href="{{ route('ventas.create') }}" class="btn btn-primary">Realizar Venta</a>
+                @endif
+
             </div>
 
             @if (sizeof($ventas) > 0)
