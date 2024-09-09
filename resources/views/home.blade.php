@@ -7,14 +7,76 @@
         }
     </style>
     <div class="w-100">
-        <div class="w-100 container-img">
-            <img class="w-100 imagen-principal img-fluid" src="{{ asset('images/imagen_principal.png') }}"
-                alt="">
-
-            <div class="text-img-principal">
-                ENCUENTRA LO QUE NECESITES
-            </div>
+        <div class="imagen-principal">
+        <style>
+            * {
+                box-sizing: border-box;
+            }
+    
+            body {
+                margin: 0;
+                font-family: Arial;
+                font-size: 17px;
+            }
+    
+            .imagen-principal {
+                position: relative;
+                width: 100%;
+                height: 500px; /* Ajusta la altura que desees para tu sección */
+                overflow: hidden; /* Asegura que el video no se salga del contenedor */
+            }
+    
+            #myVideo {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                object-fit: cover; /* Asegura que el video se ajuste al contenedor sin distorsión */
+            }
+    
+            .content {
+                position: absolute;
+                bottom: 0;
+                background: rgba(0, 0, 0, 0.5);
+                color: #f1f1f1;
+                width: 100%;
+                padding: 20px;
+            }
+    
+            #myBtn {
+                width: 200px;
+                font-size: 18px;
+                padding: 10px;
+                border: none;
+                background: #000;
+                color: #fff;
+                cursor: pointer;
+            }
+    
+            #myBtn:hover {
+                background: #ddd;
+                color: black;
+            }
+        </style>
+    
+        <video autoplay muted loop id="myVideo">
+            <source src="video/video_background.mp4" type="video/mp4">
+            Your browser does not support HTML5 video.
+        </video>
+    
+        <div class="content">
+            <h1>Encuentra lo que necesitas</h1>
+            <p>Conoce nuestra colección.</p>
+            <button id="myBtn" onclick="redirectFunction()">Comprar Ahora</button>
         </div>
+        
+        <script>
+            function redirectFunction() {
+                window.location.href = "productos.html";  // Ruta relativa a la página HTML
+            }
+        </script>
+    </div>
 
 
         <div class="container">
